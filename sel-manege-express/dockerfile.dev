@@ -1,0 +1,10 @@
+FROM node:22-bookworm
+USER root
+COPY . /root/sel-manege-express
+WORKDIR /root/sel-manege-express
+RUN npm install
+
+# This command is added to not use pre compiled bcrypt package because they is an incompatibility with bcrypt when running on a docker windows host when using pre compiled package
+RUN npm rebuild bcrypt --build-from-source
+
+CMD npm run devstart

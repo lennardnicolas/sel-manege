@@ -1,0 +1,15 @@
+<app-navbar></app-navbar>
+<div class="pageView presentationPageDisplay">
+    <div id="content">
+        @if (displayLogoutLoading) {
+            <span>Deconnexion en cours...</span>
+        }
+        @else if (logoutSuccess) {
+            <span>Vous avez été déconecté</span>
+        } @else if (!logoutSuccess){
+            <span>Une erreur s'est produite, vous n'avez pas été déconnecté</span>
+            <button mat-flat-button color="primary" (click)="logout()">Réessayer</button>
+        }
+    </div>
+</div>
+<app-footer></app-footer>

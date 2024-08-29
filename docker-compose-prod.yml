@@ -1,0 +1,77 @@
+services:
+    keydb:
+        image: eqalpha/keydb:x86_64_v6.3.3
+        user: root
+        restart: always
+        command: keydb-server /etc/keydb/keydb.conf --requirepass ${SEL_MANEGE_REDIS_PASS}
+        volumes: 
+            - keydb-data:/data
+        ports: 
+            - ${SEL_MANEGE_REDIS_PORT}:6379
+        networks:
+            - net
+
+    mariadb:
+        image: mariadb:11.4.2-noble
+        restart: always
+        environment:
+            - MYSQL_ROOT_PASSWORD=${SEL_MANEGE_MARIADB_PASS}
+        volumes:
+            - mariadb-data:/var/lib/mysql
+        ports: 
+            - ${SEL_MANEGE_MARIADB_PORT}:3306
+        networks:
+            - net
+
+    express:
+        build:
+            context: ./sel-manege-express
+            dockerfile: dockerfile.prod
+        restart: always
+        ports:
+            - ${SEL_MANEGE_EXPRESS_PORT}:1024
+        environment:
+            - SEL_MANEGE_REDIS_HOST=keydb
+            - SEL_MANEGE_REDIS_PASS=${SEL_MANEGE_REDIS_PASS}
+            - SEL_MANEGE_REDIS_PORT=6379
+            - SEL_MANEGE_EXPRESS_PORT=1024
+            - SEL_MANEGE_EXPRESS_SESSION_SECRET=${SEL_MANEGE_EXPRESS_SESSION_SECRET}
+            - SEL_MANEGE_DB_HOST=mariadb
+            - SEL_MANEGE_DB_PORT=3306
+            - SEL_MANEGE_DB_PASS=${SEL_MANEGE_MARIADB_PASS}
+            - SEL_MANEGE_ANGULAR_URL=${SEL_MANEGE_ANGULAR_URL}
+            - SEL_MANEGE_DOMAIN=${SEL_MANEGE_DOMAIN}
+            - SEL_MANEGE_BASE_USER_MAIL=${SEL_MANEGE_BASE_USER_MAIL}
+            - SEL_MANEGE_BASE_USER_PASS=${SEL_MANEGE_BASE_USER_PASS}
+            - SEL_MANEGE_PROFIL=prod
+            - SEL_MANEGE_BASE_USER_FIRST_NAME=${SEL_MANEGE_BASE_USER_FIRST_NAME}
+            - SEL_MANEGE_BASE_USER_LAST_NAME=${SEL_MANEGE_BASE_USER_LAST_NAME}
+        networks:
+            - net
+        depends_on:
+            - keydb
+            - mariadb
+    
+    angular:
+        build:
+            context: ./sel-manege-angular
+            dockerfile: dockerfile.prod
+            args:
+                - SEL_MANEGE_EXPRESS_URL=${SEL_MANEGE_EXPRESS_URL}
+        restart: always
+        ports:
+            - ${SEL_MANEGE_ANGULAR_PORT}:1024
+        environment:
+            - SEL_MANEGE_ANGULAR_PORT=1024
+        networks:
+            - net
+        depends_on:
+            - keydb
+            - mariadb
+            - express
+
+volumes:
+    keydb-data:
+    mariadb-data:
+networks:
+    net:

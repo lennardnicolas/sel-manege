@@ -1,0 +1,126 @@
+app-navbar {
+    position: fixed;
+    top: 0;
+    z-index: 10;
+    width: 100%;
+}
+.verticalSpacer {
+    height: 30px;
+    width: 100%;
+}
+.contentCenterVertical {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-image: url('../../assets/presentation_background.webp');
+    background-size: cover;
+    background-position: center;
+    margin-top: 64px;
+}
+.title {
+    font-size: 20px;
+}
+@media (min-width: 600px){
+    .title {
+        font-size: 25px;
+    }
+}
+@media (min-width: 700px){
+    .title {
+        font-size: 30px;
+    }
+}
+@media screen and (min-width: 1001px) {
+    .title {
+        font-size: 40px;
+        margin-bottom: 50px !important;
+    }
+}
+#title {
+    display: flex;
+    flex-wrap: wrap;
+}
+#title span {
+    margin-left: 10px;
+    margin-bottom: 10px;
+}
+#titleSeparator {
+    width: 60%;
+    height: 2%;
+    background-color: #333;
+    margin-bottom: 50px;
+}
+#imgExchangeSheme {
+    width: 400px;
+}
+#presentationDesc {
+    display: flex;
+    justify-content: center;
+}
+#descItem1Div, #descItem2Div{
+    min-width: 400px;
+    width: 45%;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+#descItem1Div {
+    display: flex;
+    justify-content: flex-end;
+}
+#descItem2Div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: justify;
+}
+
+#descItem2Div > * {
+    width: 400px;
+}
+.apage {
+    height: 100%;
+}
+.descSeparator {
+    margin: 0px 20px;
+}
+
+@media screen and (max-width: 1000px) {
+    .toHideSmallScreen {
+      display: none;
+    }
+    #presentationDesc {
+        flex-direction: column;
+        justify-content: flex-start;
+    }
+}
+.presentationPageDisplay {
+    display: flex;
+    flex-direction: column;
+}
+.presentationPageDisplay > div {
+    flex-grow: 1;
+}
+.textColor {
+    color: #273C48;
+}
+#joinDivText {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#joinDivText > p{
+    width: 50%;
+    min-width: 400px;
+    text-align: justify;
+    font-size: 25px;
+    line-height: 1.5;
+    margin-top: 150px;
+    margin-bottom: 70px;
+}
+#joinButton{
+    width: 30%;
+    margin-bottom: 200px;
+    min-width: 300px;
+}

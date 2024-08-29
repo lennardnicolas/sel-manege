@@ -1,0 +1,29 @@
+<mat-accordion class=>
+    <mat-expansion-panel 
+        [expanded]="true" 
+        (opened)="panelOpenState = true"
+        (closed)="panelOpenState = false">
+        <mat-expansion-panel-header class="right-aligned-header">
+            <mat-panel-title>
+                <span>{{ panelTitle }}</span>
+            </mat-panel-title>
+            <mat-panel-description class="pannelDescription">
+                <span></span>
+                <span></span>
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        @if (pannelDate != '') {
+            <p>Date : {{ pannelDate }}</p>
+        }
+        @if (pannelTime != '') {
+            <p>Heure : {{ pannelTime }}</p>
+        }
+        @if (pannelLocation != '') {
+            <p>Lieu : {{ pannelLocation }}</p>
+        }
+        @if (pannelPrice != '') {
+            <p>Prix : {{ pannelPrice }}</p>
+        }
+        <p>{{ pannelDescription }}</p>
+    </mat-expansion-panel>
+</mat-accordion>

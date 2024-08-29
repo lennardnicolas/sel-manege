@@ -1,0 +1,9 @@
+app-news-element {
+    margin-bottom: 20px;
+}
+div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 30px;
+}

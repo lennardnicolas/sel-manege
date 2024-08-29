@@ -1,0 +1,22 @@
+<footer>
+    <div class="socialIcons">
+        <a href="https://www.facebook.com/"><i class="bi bi-facebook"></i></a>
+        <a href="https://www.instagram.com/"><i class="bi bi-instagram"></i></a>
+        <a href="https://twitter.com/"><i class="bi bi-twitter-x"></i></a>
+        <a href="https://www.youtube.com/"><i class="bi bi-youtube"></i></a>
+    </div>
+    <div id="footerNav">
+        <a href="">Newsletter</a>
+        <a href="">Règlement</a>
+        <a href="">Equipe</a>
+        <a href="">A propos</a>
+        @if (authenticated) {
+            <a routerLink="/deconnexion">Déconnexion</a>
+        } @else {
+            <a routerLink="/connexion">Connexion</a>
+        }
+    </div>
+    <div class="footerBottom">
+        <span>Designed by </span><span class="designer">Nicolas Lennard</span>
+    </div>
+</footer>

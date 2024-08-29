@@ -1,0 +1,31 @@
+<app-navbar></app-navbar>
+<div class="pageView presentationPageDisplay">
+    <div id="content">
+        <form id="contactForm">
+            <span id="contactFormTitle" class="textColor">Connexion administrateur</span>
+
+            <mat-form-field class="fieldContactForm">
+              <mat-label class="textColor">Adresse mail</mat-label>
+              <input [(ngModel)]="email" name="email" (ngModelChange)="onInputChange($event)" appCustomMatInputAutofocus type="email" class="textColor" matInput placeholder="Ex: alice.dupont@gmail.com" value="">
+            </mat-form-field>
+
+            <mat-form-field class="fieldContactForm textColor">
+                <mat-label class="textColor">Mot de passe</mat-label>
+                <input (ngModelChange)="onInputChange($event)" [(ngModel)]="pass" name="pass" type="password" class="textColor" matInput placeholder="" value="">
+            </mat-form-field>
+
+            <button [disabled]="!enableConnexion" type="submit" id="connexionButton" mat-flat-button color="primary" (click)="connect()">Se connecter</button>
+
+            @if (invalidLoginError) {
+                <mat-error>Oups, il semble que la combinaison de cette adresse mail et de ce mot de passe soit invalide...</mat-error>
+            }
+            @if (invalidEmail) {
+                <mat-error>L'adresse mail doit être valide pour se connecter</mat-error>
+            }
+            @if (invalidPass) {
+                <mat-error>Le mot de passe ne doit pas être vide pour se connecter</mat-error>
+            }
+        </form>
+    </div>
+</div>
+<app-footer></app-footer>

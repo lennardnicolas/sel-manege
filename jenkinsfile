@@ -1,0 +1,30 @@
+pipeline {
+    agent any
+
+    parameters {
+        choice(
+            name: 'COMMAND',
+            choices: ['start', 'stop', 'restart', 'remove'],
+            description: 'Choose the command.'
+        )
+    }
+
+    stages {
+        stage('Executing command') {
+            steps {
+                script {
+                    if (params.COMMAND == 'start' || params.COMMAND == 'restart') {
+                        // Copy env files (Only neccessary for start and restart command)
+                        sh 'cp /root/sel-manege_env/.env ./.env'
+                    }
+
+                    //Setting execution permission
+                    sh 'chmod +x ./sel-manege.sh'
+
+                    // Removing
+                    sh './sel-manege.sh ' + "${params.COMMAND}"
+                }
+            }
+        }
+    }
+}

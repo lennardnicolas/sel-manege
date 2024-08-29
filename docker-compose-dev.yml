@@ -1,0 +1,89 @@
+services:
+    keydb:
+        image: eqalpha/keydb:x86_64_v6.3.3
+        user: root
+        restart: always
+        command: keydb-server /etc/keydb/keydb.conf --requirepass ${SEL_MANEGE_REDIS_PASS}
+        volumes: 
+            - keydb-data:/data
+        ports: 
+            - ${SEL_MANEGE_REDIS_PORT}:6379
+        networks:
+            - net
+
+    mariadb:
+        image: mariadb:11.4.2-noble
+        restart: always
+        ports: 
+            - ${SEL_MANEGE_MARIADB_PORT}:3306
+        environment:
+            - MYSQL_ROOT_PASSWORD=${SEL_MANEGE_MARIADB_PASS}
+        volumes:
+            - mariadb-data:/var/lib/mysql
+        networks:
+            - net
+
+    express:
+        build:
+            context: ./sel-manege-express
+            dockerfile: dockerfile.dev
+        restart: always
+        ports:
+            - ${SEL_MANEGE_EXPRESS_PORT}:1024
+        environment:
+            - SEL_MANEGE_REDIS_HOST=keydb
+            - SEL_MANEGE_REDIS_PASS=${SEL_MANEGE_REDIS_PASS}
+            - SEL_MANEGE_REDIS_PORT=6379
+            - SEL_MANEGE_EXPRESS_PORT=1024
+            - SEL_MANEGE_EXPRESS_SESSION_SECRET=${SEL_MANEGE_EXPRESS_SESSION_SECRET}
+            - SEL_MANEGE_DB_HOST=mariadb
+            - SEL_MANEGE_DB_PORT=3306
+            - SEL_MANEGE_DB_PASS=${SEL_MANEGE_MARIADB_PASS}
+            - SEL_MANEGE_ANGULAR_URL=${SEL_MANEGE_ANGULAR_URL}
+            - SEL_MANEGE_DOMAIN=${SEL_MANEGE_DOMAIN}
+            - SEL_MANEGE_BASE_USER_MAIL=${SEL_MANEGE_BASE_USER_MAIL}
+            - SEL_MANEGE_BASE_USER_PASS=${SEL_MANEGE_BASE_USER_PASS}
+            - SEL_MANEGE_PROFIL=dev
+            - SEL_MANEGE_BASE_USER_FIRST_NAME=${SEL_MANEGE_BASE_USER_FIRST_NAME}
+            - SEL_MANEGE_BASE_USER_LAST_NAME=${SEL_MANEGE_BASE_USER_LAST_NAME}
+        networks:
+            - net
+        depends_on:
+            - keydb
+            - mariadb
+        volumes:
+            - ./sel-manege-express:/root/sel-manege-express
+            # This volume (down) is there because it override the general one allowing to exclude this dir from sync
+            - express_node_modules:/root/sel-manege-express/node_modules
+    
+    angular:
+        build:
+            context: ./sel-manege-angular
+            dockerfile: dockerfile.dev
+            args:
+                - SEL_MANEGE_EXPRESS_URL=${SEL_MANEGE_EXPRESS_URL}
+        restart: always
+        ports:
+            - ${SEL_MANEGE_ANGULAR_PORT}:1024
+        environment:
+            - SEL_MANEGE_ANGULAR_PORT=1024
+        networks:
+            - net
+        depends_on:
+            - keydb
+            - mariadb
+            - express
+        volumes:
+            - ./sel-manege-angular:/root/sel-manege-angular
+            # These volumes (down) are there because they override the general one allowing to exclude these dir from sync
+            - angular_node_modules:/root/sel-manege-angular/node_modules
+            - angular_environment:/root/sel-manege-angular/environment
+
+volumes:
+    keydb-data:
+    mariadb-data:
+    express_node_modules:
+    angular_node_modules:
+    angular_environment:
+networks:
+    net:

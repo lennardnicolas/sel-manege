@@ -1,0 +1,23 @@
+nav {
+    background-color: #3F51B5 !important;
+    padding: 0;
+}
+
+nav img {
+    height: 64px;
+    margin-right: 20px;
+}
+
+nav div.container-fluid {
+    padding: 0;
+}
+
+.nav-item a {
+    height: 64px;
+    width: 100%;
+    padding: 20px;
+}
+
+.spacer {
+    width: 100% !important;
+}

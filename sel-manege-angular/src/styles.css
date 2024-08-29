@@ -1,0 +1,42 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+}
+* {
+    font-family: UploadedRobotoBold, UploadedRobotoRegular !important;
+}
+@font-face {
+    font-family: 'UploadedRobotoRegular';
+    src:
+        url('./assets/fonts/roboto/roboto-regular.woff2') format('woff2'),
+        url('./assets/fonts/roboto/roboto-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UploadedRobotoBold';
+    src:
+        url('./assets/fonts/roboto/roboto-bold.woff2') format('woff2'),
+        url('./assets/fonts/roboto/roboto-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+.pageView {
+    min-height: 100%;
+}
+.semiPageView {
+    min-height: 50%;
+}
+.right-aligned-header > .mat-content {
+    justify-content: space-between;
+}
+
+.mat-content > mat-panel-title,
+.mat-content > mat-panel-description {
+    flex: 0 0 auto;
+}

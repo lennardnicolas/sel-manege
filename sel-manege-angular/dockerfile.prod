@@ -1,0 +1,11 @@
+FROM node:22-bookworm
+USER root
+COPY . /root/sel-manege-angular
+WORKDIR /root/sel-manege-angular
+
+ARG SEL_MANEGE_EXPRESS_URL
+RUN sed -i "s|{{SEL_MANEGE_EXPRESS_URL}}|${SEL_MANEGE_EXPRESS_URL}|g" ./environment/environment.ts
+
+RUN npm install
+RUN npm run build
+CMD npm run start
