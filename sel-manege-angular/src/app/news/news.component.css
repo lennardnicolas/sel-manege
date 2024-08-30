@@ -23,3 +23,14 @@ app-news-element-list {
     min-width: 400px;
 }
 
+#addNewsBtn {
+    width: 80vw;
+    min-width: 400px;
+    margin-top: 30px;
+}
+
+.addNews {
+    width: 80vw;
+    min-width: 400px;
+    margin-top: 10px;
+}

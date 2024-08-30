@@ -1,6 +1,12 @@
 <app-navbar></app-navbar>
 <div class="pageView presentationPageDisplay">
     <div id="content">
+        @if (authenticated) {
+            <button (click)="addNews()" mat-flat-button color="primary" id="addNewsBtn">Add news</button>
+        }
+        @if (displayCreateNews) {
+            <app-news-element class="addNews"></app-news-element>
+        }
         <app-news-element-list></app-news-element-list>
     </div>
 </div>

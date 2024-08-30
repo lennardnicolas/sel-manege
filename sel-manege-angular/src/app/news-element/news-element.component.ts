@@ -11,6 +11,7 @@ import {MatExpansionModule} from '@angular/material/expansion'
 })
 
 export class NewsElementComponent {
+    editView: boolean = false
     panelOpenState: boolean = false
     panelTitle: string = 'Apéro'
     pannelDate: string = '30.01.2024'

@@ -1,29 +1,79 @@
-<mat-accordion class=>
-    <mat-expansion-panel 
-        [expanded]="true" 
-        (opened)="panelOpenState = true"
-        (closed)="panelOpenState = false">
+<mat-accordion class="">
+    <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header class="right-aligned-header">
             <mat-panel-title>
-                <span>{{ panelTitle }}</span>
+                @if (editView) {
+                    <span>Title : </span>
+                } @else {
+                    <span>{{ panelTitle }}</span>
+                }
             </mat-panel-title>
             <mat-panel-description class="pannelDescription">
                 <span></span>
                 <span></span>
             </mat-panel-description>
         </mat-expansion-panel-header>
-        @if (pannelDate != '') {
-            <p>Date : {{ pannelDate }}</p>
+
+        @if (editView) {
+            <p>
+                <span>Date : </span>
+            </p>
+        } @else {
+            @if (pannelDate != '') {
+                <p>
+                    <span>Date : </span>
+                    <span>{{ pannelDate }}</span>
+                </p>
+            }
         }
-        @if (pannelTime != '') {
-            <p>Heure : {{ pannelTime }}</p>
+
+        @if (editView) {
+            <p>
+                <span>Heure : </span>
+            </p>
+        } @else {
+            @if (pannelTime != '') {
+                <p>
+                    <span>Heure : </span>
+                    <span>{{ pannelTime }}</span>
+                </p>
+            }
         }
-        @if (pannelLocation != '') {
-            <p>Lieu : {{ pannelLocation }}</p>
+
+        @if (editView) {
+            <p>
+                <span>Lieu : </span>
+            </p>
+        } @else {
+            @if (pannelLocation != '') {
+                <p>
+                    <span>Lieu : </span>
+                    <span>{{ pannelLocation }}</span>
+                </p>
+            }
         }
-        @if (pannelPrice != '') {
-            <p>Prix : {{ pannelPrice }}</p>
+
+        @if (editView) {
+            <p>
+                <span>Prix : </span>
+            </p>
+        } @else {
+            @if (pannelPrice != '') {
+                <p>
+                    <span>Prix : </span>
+                    <span>{{ pannelPrice }}</span>
+                </p>
+            }
         }
-        <p>{{ pannelDescription }}</p>
+
+        @if (editView) {
+            <p>
+                <span>Description : </span>
+            </p>
+        } @else {
+            <p>
+                <span>{{ pannelDescription }}</span>
+            </p>
+        }
     </mat-expansion-panel>
 </mat-accordion>
