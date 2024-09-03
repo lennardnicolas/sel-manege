@@ -1,5 +1,3 @@
-- Change validation method to display field error in connexion
-
 - Add message saying that news has been added on success
 
 - Add possibility to fetch the news (express)
