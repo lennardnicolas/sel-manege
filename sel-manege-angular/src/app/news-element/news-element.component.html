@@ -3,7 +3,7 @@
         <mat-expansion-panel-header class="right-aligned-header">
             <mat-panel-title>
                 @if (editView) {
-                    <span>Title : </span>
+                    <span>Nouvelle news</span>
                 } @else {
                     <span>{{ panelTitle }}</span>
                 }
@@ -13,13 +13,53 @@
                 <span></span>
             </mat-panel-description>
         </mat-expansion-panel-header>
+        @if (editView) {
+            <p>
+                <mat-form-field class="textColor" class="addNewsInput">
+                    <mat-label class="textColor">Titre</mat-label>
+                    <input
+                        appCustomMatInputAutofocus
+                        [formControl]="titleFormControl"
+                        [errorStateMatcher]="matcher"
+                        [(ngModel)]="panelTitle"
+                        name="panelTitle"
+                        type="text"
+                        class="textColor"
+                        matInput
+                        placeholder=""
+                        value=""
+                    />
+                    @if (titleFormControl.hasError('required')) {
+                        <mat-error>Le titre ne doit pas être vide</mat-error>
+                    }
+                </mat-form-field>
+            </p>
+        }
 
         @if (editView) {
             <p>
-                <span>Date : </span>
+                <mat-form-field class="textColor" class="percent80Width">
+                    <mat-label class="textColor">Date</mat-label>
+                    <input
+                        id = 'dateInput'
+                        [formControl]="dateFormControl"
+                        [errorStateMatcher]="matcher"
+                        [(ngModel)]="pannelDate"
+                        name="pannelDate"
+                        type="date"
+                        class="textColor"
+                        matInput
+                        placeholder=""
+                        value=""
+                    />
+                    @if (dateFormControl.hasError('invalidDate')) {
+                        <mat-error>La date doit se trouver entre l'an 2000 et l'an 2100</mat-error>
+                    }
+                </mat-form-field>
+                <button mat-stroked-button (click)="recetDate()" class="percent20Width" color="primary">Effacer</button>
             </p>
         } @else {
-            @if (pannelDate != '') {
+            @if (pannelDate) {
                 <p>
                     <span>Date : </span>
                     <span>{{ pannelDate }}</span>
@@ -29,10 +69,23 @@
 
         @if (editView) {
             <p>
-                <span>Heure : </span>
+                <mat-form-field class="textColor" class="percent80Width">
+                    <mat-label class="textColor">Heure</mat-label>
+                    <input
+                        id = 'timeInput'
+                        [(ngModel)]="pannelTime"
+                        name="pannelTime"
+                        type="time"
+                        class="textColor"
+                        matInput
+                        placeholder=""
+                        value=""
+                    />
+                </mat-form-field>
+                <button mat-stroked-button (click)="recetTime()" class="percent20Width" color="primary">Effacer</button>
             </p>
         } @else {
-            @if (pannelTime != '') {
+            @if (pannelTime) {
                 <p>
                     <span>Heure : </span>
                     <span>{{ pannelTime }}</span>
@@ -42,7 +95,18 @@
 
         @if (editView) {
             <p>
-                <span>Lieu : </span>
+                <mat-form-field class="textColor" class="addNewsInput">
+                    <mat-label class="textColor">Lieu</mat-label>
+                    <input
+                        [(ngModel)]="pannelLocation"
+                        name="pannelLocation"
+                        type="text"
+                        class="textColor"
+                        matInput
+                        placeholder=""
+                        value=""
+                    />
+                </mat-form-field>
             </p>
         } @else {
             @if (pannelLocation != '') {
@@ -55,7 +119,18 @@
 
         @if (editView) {
             <p>
-                <span>Prix : </span>
+                <mat-form-field class="textColor" class="addNewsInput">
+                    <mat-label class="textColor">Prix</mat-label>
+                    <input
+                        [(ngModel)]="pannelPrice"
+                        name="pannelPrice"
+                        type="text"
+                        class="textColor"
+                        matInput
+                        placeholder=""
+                        value=""
+                    />
+                </mat-form-field>
             </p>
         } @else {
             @if (pannelPrice != '') {
@@ -68,12 +143,31 @@
 
         @if (editView) {
             <p>
-                <span>Description : </span>
+                <mat-form-field class="textColor" class="addNewsInput">
+                    <mat-label class="textColor">Description</mat-label>
+                    <textarea
+                        [formControl]="descriptionFormControl"
+                        [(ngModel)]="pannelDescription"
+                        name="pannelDescription"
+                        class="textColor"
+                        matInput
+                        placeholder=""
+                        value=""
+                    ></textarea>
+                    @if (descriptionFormControl.hasError('required')) {
+                        <mat-error>La description ne doit pas être vide</mat-error>
+                    }
+                </mat-form-field>
             </p>
         } @else {
             <p>
                 <span>{{ pannelDescription }}</span>
             </p>
+        }
+
+        @if (createState) {
+            <button mat-flat-button color="warn" (click)="cancel()" class="percent50Width">Annuler</button>
+            <button mat-flat-button (click)="add()" class="percent50Width successColorBg text-white">Ajouter</button>
         }
     </mat-expansion-panel>
 </mat-accordion>

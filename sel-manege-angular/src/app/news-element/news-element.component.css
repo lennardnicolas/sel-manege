@@ -1,7 +1,30 @@
-.pannelDescription > span{
+.pannelDescription > span {
     margin-left: 20px;
 }
 p {
     text-align: justify;
-    color: #273C48;
+    color: #273c48;
+}
+.textColor {
+    color: #273c48;
+}
+
+.addNewsInput {
+    width: 100%;
+}
+
+.percent80Width {
+    width: 80%;
+}
+
+.percent20Width {
+    width: 20%;
+}
+
+.percent50Width {
+    width: 50%;
+}
+
+.successColorBg {
+    background-color: #29c01b;
 }

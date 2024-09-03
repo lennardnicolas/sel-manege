@@ -31,13 +31,12 @@ export class NewsComponent {
         setTimeout(() => {
             if (this.newsElementComponent) {
                 this.newsElementComponent.editView = true
-                this.newsElementComponent.panelTitle = ''
-                this.newsElementComponent.pannelDate = new Date().toString()
-                this.newsElementComponent.pannelDescription = ''
-                this.newsElementComponent.pannelLocation = ''
-                this.newsElementComponent.pannelPrice = 'Gratuit'
-                this.newsElementComponent.pannelTime = new Date().toTimeString().split(' ')[0]
+                this.newsElementComponent.createState = true
             }
         }, 0)
+    }
+
+    newNewsCancelled() {
+        this.displayCreateNews = false
     }
 }
