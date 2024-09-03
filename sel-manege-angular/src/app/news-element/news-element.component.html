@@ -8,7 +8,7 @@
                     <span>{{ panelTitle }}</span>
                 }
             </mat-panel-title>
-            <mat-panel-description class="pannelDescription">
+            <mat-panel-description class="panelDescription">
                 <span></span>
                 <span></span>
             </mat-panel-description>
@@ -44,8 +44,8 @@
                         id = 'dateInput'
                         [formControl]="dateFormControl"
                         [errorStateMatcher]="matcher"
-                        [(ngModel)]="pannelDate"
-                        name="pannelDate"
+                        [(ngModel)]="panelDate"
+                        name="panelDate"
                         type="date"
                         class="textColor"
                         matInput
@@ -59,10 +59,10 @@
                 <button mat-stroked-button (click)="recetDate()" class="percent20Width" color="primary">Effacer</button>
             </p>
         } @else {
-            @if (pannelDate) {
+            @if (panelDate) {
                 <p>
                     <span>Date : </span>
-                    <span>{{ pannelDate }}</span>
+                    <span>{{ panelDate }}</span>
                 </p>
             }
         }
@@ -73,8 +73,8 @@
                     <mat-label class="textColor">Heure</mat-label>
                     <input
                         id = 'timeInput'
-                        [(ngModel)]="pannelTime"
-                        name="pannelTime"
+                        [(ngModel)]="panelTime"
+                        name="panelTime"
                         type="time"
                         class="textColor"
                         matInput
@@ -85,10 +85,10 @@
                 <button mat-stroked-button (click)="recetTime()" class="percent20Width" color="primary">Effacer</button>
             </p>
         } @else {
-            @if (pannelTime) {
+            @if (panelTime) {
                 <p>
                     <span>Heure : </span>
-                    <span>{{ pannelTime }}</span>
+                    <span>{{ panelTime }}</span>
                 </p>
             }
         }
@@ -98,8 +98,8 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Lieu</mat-label>
                     <input
-                        [(ngModel)]="pannelLocation"
-                        name="pannelLocation"
+                        [(ngModel)]="panelLocation"
+                        name="panelLocation"
                         type="text"
                         class="textColor"
                         matInput
@@ -109,10 +109,10 @@
                 </mat-form-field>
             </p>
         } @else {
-            @if (pannelLocation != '') {
+            @if (panelLocation != '') {
                 <p>
                     <span>Lieu : </span>
-                    <span>{{ pannelLocation }}</span>
+                    <span>{{ panelLocation }}</span>
                 </p>
             }
         }
@@ -122,8 +122,8 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Prix</mat-label>
                     <input
-                        [(ngModel)]="pannelPrice"
-                        name="pannelPrice"
+                        [(ngModel)]="panelPrice"
+                        name="panelPrice"
                         type="text"
                         class="textColor"
                         matInput
@@ -133,10 +133,10 @@
                 </mat-form-field>
             </p>
         } @else {
-            @if (pannelPrice != '') {
+            @if (panelPrice != '') {
                 <p>
                     <span>Prix : </span>
-                    <span>{{ pannelPrice }}</span>
+                    <span>{{ panelPrice }}</span>
                 </p>
             }
         }
@@ -147,8 +147,8 @@
                     <mat-label class="textColor">Description</mat-label>
                     <textarea
                         [formControl]="descriptionFormControl"
-                        [(ngModel)]="pannelDescription"
-                        name="pannelDescription"
+                        [(ngModel)]="panelDescription"
+                        name="panelDescription"
                         class="textColor"
                         matInput
                         placeholder=""
@@ -161,7 +161,7 @@
             </p>
         } @else {
             <p>
-                <span>{{ pannelDescription }}</span>
+                <span>{{ panelDescription }}</span>
             </p>
         }
 

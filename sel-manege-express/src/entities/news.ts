@@ -18,8 +18,8 @@ export class News {
     @Column({ type: 'varchar', length: 255, nullable: true })
     location!: string | null
 
-    @Column({ type: 'decimal', precision: 10, scale: 2, nullable: true })
-    price!: number | null
+    @Column({ type: 'varchar', nullable: true })
+    price!: string | null
 
     @Column({ type: 'text' })
     description!: string

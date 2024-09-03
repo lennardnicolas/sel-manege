@@ -16,6 +16,7 @@ import { ErrorStateMatcher } from '@angular/material/core'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatButtonModule } from '@angular/material/button'
 import { CustomMatInputAutofocusDirective } from '../custom-mat-input-autofocus.directive'
+import { NewsService } from '../news.service'
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -34,12 +35,13 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
         MatFormFieldModule,
         MatButtonModule,
         ReactiveFormsModule,
-        CustomMatInputAutofocusDirective
+        CustomMatInputAutofocusDirective,
     ],
     templateUrl: './news-element.component.html',
     styleUrl: './news-element.component.css',
 })
 export class NewsElementComponent {
+    newsService: NewsService
     @Output() cancelEvent = new EventEmitter<void>()
 
     titleFormControl = new FormControl('', [Validators.required])
@@ -52,11 +54,15 @@ export class NewsElementComponent {
 
     panelOpenState: boolean = false
     panelTitle: string = ''
-    pannelDate: null | Date = null
-    pannelTime: string | null = null
-    pannelLocation: string = ''
-    pannelPrice: string = ''
-    pannelDescription = ''
+    panelDate: null | string = null
+    panelTime: string | null = null
+    panelLocation: string = ''
+    panelPrice: string = ''
+    panelDescription = ''
+
+    constructor(newsService: NewsService) {
+        this.newsService = newsService
+    }
 
     cancel() {
         this.cancelEvent.emit()
@@ -67,8 +73,13 @@ export class NewsElementComponent {
         this.descriptionFormControl.markAllAsTouched()
         this.dateFormControl.markAllAsTouched()
         
+        const formattedTime: string | null = typeof this.panelTime === 'string' ? this.panelTime + ':00' : null
+        const formattedDate: string | null = typeof this.panelDate === 'string' && this.panelDate != '' ? this.panelDate.toString() : null
+        const formattedLocation: string | null = typeof this.panelLocation === 'string' && this.panelLocation != '' ? this.panelLocation : null
+        const formattedPrice: string | null = typeof this.panelPrice === 'string' && this.panelPrice != '' ? this.panelPrice : null
+
         if(this.titleFormControl.valid && this.descriptionFormControl.valid && this.dateFormControl.valid) {
-            alert('add')
+            this.newsService.addNews(this.panelTitle, formattedDate, formattedTime, formattedLocation, formattedPrice, this.panelDescription)
         }
     }
 
@@ -82,21 +93,20 @@ export class NewsElementComponent {
                 if (year < 2000 || year > 2100) {
                     return { invalidDate: true }
                 }
-                
             }
             return null
         }
     }
 
     recetDate() {
-        this.pannelDate = null
+        this.panelDate = null
         const dateInput = document.querySelector('#dateInput') as HTMLInputElement
         dateInput.value = ''
         this.dateFormControl.setErrors(null)
     }
 
     recetTime() {
-        this.pannelTime = null
+        this.panelTime = null
         const timeInput = document.querySelector('#timeInput') as HTMLInputElement
         timeInput.value = ''
     }

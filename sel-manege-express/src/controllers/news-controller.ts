@@ -9,7 +9,7 @@ export class NewsController {
         const date: Date | null = req.body.date ? new Date(req.body.date) : null
         const time: string | null = req.body.time ? req.body.time : null
         const location: string | null = req.body.location ? req.body.location : null
-        const price: number | null = req.body.price ? req.body.price : null
+        const price: string | null = req.body.price ? req.body.price : null
 
         try {
             const news = new News()
