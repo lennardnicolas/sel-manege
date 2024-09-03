@@ -1,3 +1,13 @@
+- Change validation method to display field error in connexion
+
+- Add message saying that news has been added on success
+
+- Add possibility to fetch the news (express)
+
+- Angular ui display these news
+
+- Handle error message if cant fetch on angular ui
+
 - Add possibility to post and manage these posts
 
 - Add possibility to see user data (first & last name, email, creation date, activation date)
