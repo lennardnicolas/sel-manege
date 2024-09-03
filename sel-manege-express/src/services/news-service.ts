@@ -8,6 +8,10 @@ export class NewsService {
         return this.newsModel.getOneByID(id)
     }
 
+    async getAll(): Promise<News[]> {
+        return this.newsModel.getAll()
+    }
+
     async update(news: News): Promise<News> {
         return this.newsModel.save(news)
     }

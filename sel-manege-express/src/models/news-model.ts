@@ -3,12 +3,17 @@ import { News } from '../entities/news.js'
 
 export class NewsModel {
     async getOneByID(id: number): Promise<News | null> {
-        const userRepository = dataSource.getRepository(News)
-        return await userRepository.findOne({ where: { id } })
+        const newsRepository = dataSource.getRepository(News)
+        return newsRepository.findOne({ where: { id } })
+    }
+
+    async getAll(): Promise<News[]> {
+        const newsRepository = dataSource.getRepository(News)
+        return newsRepository.find()
     }
 
     async save(news: News): Promise<News> {
-        const userRepository = dataSource.getRepository(News)
-        return await userRepository.save(news)
+        const newsRepository = dataSource.getRepository(News)
+        return newsRepository.save(news)
     }
 }

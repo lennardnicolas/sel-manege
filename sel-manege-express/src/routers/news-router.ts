@@ -17,4 +17,10 @@ newsRouter.put(
     (req: Request, res: Response) => newsController.create(req, res),
 )
 
+// Get all news
+newsRouter.get(
+    '/allnews',
+    (req: Request, res: Response) => newsController.getAll(req, res),
+)
+
 export default newsRouter

@@ -3,7 +3,7 @@ import { AuthService } from "../services/auth-service.js"
 import { Auth } from "../entities/auth.js"
 
 export class AuthController {
-    authService: AuthService = new AuthService()
+    private authService: AuthService = new AuthService()
     
     async login(req: Request, res: Response) {
         const email: string = req.body.email

@@ -3,6 +3,8 @@ import { News } from '../entities/news.js'
 import { NewsService } from '../services/news-service.js'
 
 export class NewsController {
+    private newsService = new NewsService()
+
     async create(req: Request, res: Response) {
         const title: string = req.body.title
         const description: string = req.body.description
@@ -22,12 +24,22 @@ export class NewsController {
             news.location = location
             news.price = price
 
-            const newsService = new NewsService()
-            await newsService.create(news)
+            
+            await this.newsService.create(news)
 
             res.json('News added')
         } catch (err) {
             const baseErrMessage: string = 'Error when adding news'
+            console.log(baseErrMessage + ' : ' + err)
+            res.status(500).json(baseErrMessage)
+        }
+    }
+
+    async getAll(req: Request, res: Response) {
+        try {
+            res.json(await this.newsService.getAll())
+        } catch (err) {
+            const baseErrMessage: string = 'Error fetching news'
             console.log(baseErrMessage + ' : ' + err)
             res.status(500).json(baseErrMessage)
         }

@@ -1,5 +1,3 @@
-- Add possibility to fetch the news (express)
-
 - Angular ui display these news
 
 - Add display news saying they is no news for now if no news exist
