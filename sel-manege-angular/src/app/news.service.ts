@@ -8,7 +8,7 @@ import axios from 'axios'
 export class NewsService {
     constructor() {}
 
-    async addNews(
+    async add(
         title: string,
         date: string | null,
         time: string | null,
@@ -36,6 +36,22 @@ export class NewsService {
             return true
         } catch (err) {
             console.error('Add news error (In contacting server) : ' + err)
+            return false
+        }
+    }
+
+    async getAll(): Promise<boolean | object> {
+        const options = {
+            method: 'GET',
+            url: ENV.expressUrl + '/allnews',
+            withCredentials: true,
+        }
+
+        try {
+            const response = await (await axios.request(options)).data
+            return response
+        } catch (err) {
+            console.error('Impossible to get all the news : ' + err)
             return false
         }
     }

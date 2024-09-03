@@ -1,7 +1,3 @@
-- Angular ui display these news
-
-- Add display news saying they is no news for now if no news exist
-
 - Handle error message if cant fetch on angular ui
 
 - Add possibility to remove and edit these news

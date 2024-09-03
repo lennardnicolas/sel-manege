@@ -1,4 +1,5 @@
 <div>
-    <app-news-element></app-news-element>
-    <app-news-element></app-news-element>
+    @for(news of newsList; track news) {
+        <app-news-element></app-news-element>
+    }
 </div>

@@ -9,7 +9,11 @@ export class NewsModel {
 
     async getAll(): Promise<News[]> {
         const newsRepository = dataSource.getRepository(News)
-        return newsRepository.find()
+        return newsRepository.find({
+            order: {
+                id: 'DESC',
+            },
+        })
     }
 
     async save(news: News): Promise<News> {

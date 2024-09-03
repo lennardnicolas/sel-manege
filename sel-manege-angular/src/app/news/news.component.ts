@@ -19,6 +19,7 @@ export class NewsComponent {
     displaySuccesAddNews: boolean = false
 
     @ViewChild(NewsElementComponent) newsElementComponent!: NewsElementComponent
+    @ViewChild(NewsElementListComponent) newsElementListComponent!: NewsElementListComponent
 
     constructor(authService: AuthService) {
         authService.isAuthenticated().then((isAuthenticated: boolean) => {
@@ -47,5 +48,7 @@ export class NewsComponent {
         setTimeout(() => {
             this.displaySuccesAddNews = false
         }, 5000)
+
+        this.newsElementListComponent.reloadNews()
     }
 }

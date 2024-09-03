@@ -45,12 +45,12 @@ export class NewsElementComponent {
     @Output() cancelEvent = new EventEmitter<void>()
     @Output() newsAddSuccess = new EventEmitter<void>()
 
-    panelTitle: string = ''
-    panelDate: null | string = null
-    panelTime: string | null = null
-    panelLocation: string = ''
-    panelPrice: string = ''
-    panelDescription = ''
+    panelTitle!: string
+    panelDate!: string | null
+    panelTime!: string | null
+    panelLocation!: string
+    panelPrice!: string
+    panelDescription!: string
 
     titleFormControl = new FormControl('', [Validators.required])
     descriptionFormControl = new FormControl('', [Validators.required])
@@ -100,7 +100,7 @@ export class NewsElementComponent {
                     ? this.priceFormControl.value
                     : null
 
-            const success: boolean = await this.newsService.addNews(
+            const success: boolean = await this.newsService.add(
                 this.titleFormControl.value!,
                 formattedDate,
                 formattedTime,
