@@ -34,3 +34,10 @@ app-news-element-list {
     min-width: 400px;
     margin-top: 10px;
 }
+
+#addNewsSuccess {
+    text-align: center;
+    margin-top: 10px;
+    width: 80vw;
+    min-width: 400px;
+}

@@ -16,6 +16,7 @@ import { NewsElementComponent } from '../news-element/news-element.component'
 export class NewsComponent {
     authenticated: boolean = false
     displayCreateNews: boolean = false
+    displaySuccesAddNews: boolean = false
 
     @ViewChild(NewsElementComponent) newsElementComponent!: NewsElementComponent
 
@@ -38,5 +39,13 @@ export class NewsComponent {
 
     newNewsCancelled() {
         this.displayCreateNews = false
+    }
+
+    newsAddedSuccess() {
+        this.displaySuccesAddNews = true
+
+        setTimeout(() => {
+            this.displaySuccesAddNews = false
+        }, 5000)
     }
 }

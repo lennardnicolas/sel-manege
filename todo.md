@@ -1,7 +1,3 @@
-- Add message saying that news has been added on success
-
-- Make sure the app is usable on 360px screen (small phones)
-
 - Add possibility to fetch the news (express)
 
 - Angular ui display these news
@@ -13,6 +9,8 @@
 - Add possibility to remove and edit these news
 
 - Unificate the migrations
+
+- Make sure the app is usable on 360px screen (small phones)
 
 - Add possibility to see user data (first & last name, email, creation date, activation date)
 

@@ -4,8 +4,17 @@
         @if (authenticated) {
             <button (click)="addNews()" mat-flat-button color="primary" id="addNewsBtn">Ajouter une news</button>
         }
+
+        @if (displaySuccesAddNews) {
+            <div id="addNewsSuccess" class="alert alert-success" role="alert">News ajoutée</div>
+        }
+
         @if (displayCreateNews) {
-            <app-news-element (cancelEvent)="newNewsCancelled()" class="addNews"></app-news-element>
+            <app-news-element
+                (newsAddSuccess)="newsAddedSuccess()"
+                (cancelEvent)="newNewsCancelled()"
+                class="addNews"
+            ></app-news-element>
         }
         <app-news-element-list></app-news-element-list>
     </div>

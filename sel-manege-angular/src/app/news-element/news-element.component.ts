@@ -43,6 +43,7 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 export class NewsElementComponent {
     newsService: NewsService
     @Output() cancelEvent = new EventEmitter<void>()
+    @Output() newsAddSuccess = new EventEmitter<void>()
 
     panelTitle: string = ''
     panelDate: null | string = null
@@ -111,6 +112,7 @@ export class NewsElementComponent {
             if (!success) {
                 this.displayAddError = true
             } else {
+                this.newsAddSuccess.emit()
                 this.cancelEvent.emit()
             }
         }
