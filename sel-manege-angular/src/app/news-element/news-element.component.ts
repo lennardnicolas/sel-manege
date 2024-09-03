@@ -60,6 +60,8 @@ export class NewsElementComponent {
     panelPrice: string = ''
     panelDescription = ''
 
+    displayAddError: boolean = false
+
     constructor(newsService: NewsService) {
         this.newsService = newsService
     }
@@ -68,7 +70,9 @@ export class NewsElementComponent {
         this.cancelEvent.emit()
     }
 
-    add() {
+    async add() {
+        this.displayAddError = false
+
         this.titleFormControl.markAllAsTouched()
         this.descriptionFormControl.markAllAsTouched()
         this.dateFormControl.markAllAsTouched()
@@ -79,7 +83,12 @@ export class NewsElementComponent {
         const formattedPrice: string | null = typeof this.panelPrice === 'string' && this.panelPrice != '' ? this.panelPrice : null
 
         if(this.titleFormControl.valid && this.descriptionFormControl.valid && this.dateFormControl.valid) {
-            this.newsService.addNews(this.panelTitle, formattedDate, formattedTime, formattedLocation, formattedPrice, this.panelDescription)
+            const success: boolean = await this.newsService.addNews(this.panelTitle, formattedDate, formattedTime, formattedLocation, formattedPrice, this.panelDescription)
+            if(!success) {
+                this.displayAddError = true
+            } else {
+                this.cancelEvent.emit()
+            }
         }
     }
 

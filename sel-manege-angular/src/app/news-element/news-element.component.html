@@ -169,5 +169,9 @@
             <button mat-flat-button color="warn" (click)="cancel()" class="percent50Width">Annuler</button>
             <button mat-flat-button (click)="add()" class="percent50Width successColorBg text-white">Ajouter</button>
         }
+
+        @if (displayAddError) {
+            <mat-error id="addError">Une erreur est survenue lors de l'ajout de la news, veuiller re-essailler</mat-error>
+        }
     </mat-expansion-panel>
 </mat-accordion>
