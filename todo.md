@@ -1,5 +1,7 @@
 - Add message saying that news has been added on success
 
+- Make sure the app is usable on 360px screen (small phones)
+
 - Add possibility to fetch the news (express)
 
 - Angular ui display these news
