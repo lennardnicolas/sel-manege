@@ -7,34 +7,39 @@
             <mat-form-field class="fieldContactForm">
                 <mat-label class="textColor">Adresse mail</mat-label>
                 <input
-                    [(ngModel)]="email"
+                    [formControl]="emailFormControl"
+                    [errorStateMatcher]="matcher"
                     name="email"
-                    (ngModelChange)="onInputChange($event)"
                     appCustomMatInputAutofocus
                     type="email"
                     class="textColor"
                     matInput
                     placeholder="Ex: alice.dupont@gmail.com"
-                    value=""
                 />
+                @if (emailFormControl.hasError('required')) {
+                    <mat-error>L'adresse mail ne doit pas être vide pour se connecter</mat-error>
+                } @else if (emailFormControl.hasError('email')) {
+                    <mat-error>L'adresse mail doit être valide pour se connecter</mat-error>
+                }
             </mat-form-field>
 
             <mat-form-field class="fieldContactForm textColor">
                 <mat-label class="textColor">Mot de passe</mat-label>
                 <input
-                    (ngModelChange)="onInputChange($event)"
-                    [(ngModel)]="pass"
+                    [formControl]="passFormControl"
+                    [errorStateMatcher]="matcher"
                     name="pass"
                     type="password"
                     class="textColor"
                     matInput
                     placeholder=""
-                    value=""
                 />
+                @if (passFormControl.hasError('required')) {
+                    <mat-error>Le mot de passe ne doit pas être vide</mat-error>
+                }
             </mat-form-field>
 
             <button
-                [disabled]="!enableConnexion"
                 type="submit"
                 id="connexionButton"
                 mat-flat-button
@@ -45,15 +50,9 @@
             </button>
 
             @if (invalidLoginError) {
-                <mat-error>
+                <mat-error class="generalMat-error">
                     Oups, il semble que la combinaison de cette adresse mail et de ce mot de passe soit invalide...
                 </mat-error>
-            }
-            @if (invalidEmail) {
-                <mat-error>L'adresse mail doit être valide pour se connecter</mat-error>
-            }
-            @if (invalidPass) {
-                <mat-error>Le mot de passe ne doit pas être vide pour se connecter</mat-error>
             }
         </form>
     </div>

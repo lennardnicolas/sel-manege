@@ -21,13 +21,11 @@
                         appCustomMatInputAutofocus
                         [formControl]="titleFormControl"
                         [errorStateMatcher]="matcher"
-                        [(ngModel)]="panelTitle"
                         name="panelTitle"
                         type="text"
                         class="textColor"
                         matInput
                         placeholder=""
-                        value=""
                     />
                     @if (titleFormControl.hasError('required')) {
                         <mat-error>Le titre ne doit pas être vide</mat-error>
@@ -44,13 +42,11 @@
                         id = 'dateInput'
                         [formControl]="dateFormControl"
                         [errorStateMatcher]="matcher"
-                        [(ngModel)]="panelDate"
                         name="panelDate"
                         type="date"
                         class="textColor"
                         matInput
                         placeholder=""
-                        value=""
                     />
                     @if (dateFormControl.hasError('invalidDate')) {
                         <mat-error>La date doit se trouver entre l'an 2000 et l'an 2100</mat-error>
@@ -73,13 +69,13 @@
                     <mat-label class="textColor">Heure</mat-label>
                     <input
                         id = 'timeInput'
-                        [(ngModel)]="panelTime"
+                        [formControl]="timeFormControl"
+                        [errorStateMatcher]="matcher"
                         name="panelTime"
                         type="time"
                         class="textColor"
                         matInput
                         placeholder=""
-                        value=""
                     />
                 </mat-form-field>
                 <button mat-stroked-button (click)="recetTime()" class="percent20Width" color="primary">Effacer</button>
@@ -98,13 +94,13 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Lieu</mat-label>
                     <input
-                        [(ngModel)]="panelLocation"
+                        [formControl]="locationFormControl"
+                        [errorStateMatcher]="matcher"
                         name="panelLocation"
                         type="text"
                         class="textColor"
                         matInput
                         placeholder=""
-                        value=""
                     />
                 </mat-form-field>
             </p>
@@ -122,13 +118,13 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Prix</mat-label>
                     <input
-                        [(ngModel)]="panelPrice"
+                        [formControl]="priceFormControl"
+                        [errorStateMatcher]="matcher"
                         name="panelPrice"
                         type="text"
                         class="textColor"
                         matInput
                         placeholder=""
-                        value=""
                     />
                 </mat-form-field>
             </p>
@@ -147,12 +143,11 @@
                     <mat-label class="textColor">Description</mat-label>
                     <textarea
                         [formControl]="descriptionFormControl"
-                        [(ngModel)]="panelDescription"
+                        [errorStateMatcher]="matcher"
                         name="panelDescription"
                         class="textColor"
                         matInput
                         placeholder=""
-                        value=""
                     ></textarea>
                     @if (descriptionFormControl.hasError('required')) {
                         <mat-error>La description ne doit pas être vide</mat-error>

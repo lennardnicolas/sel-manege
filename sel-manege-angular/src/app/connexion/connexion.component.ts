@@ -3,11 +3,19 @@ import { NavbarComponent } from '../navbar/navbar.component'
 import { FooterComponent } from '../footer/footer.component'
 import { MatInputModule } from '@angular/material/input'
 import { MatFormFieldModule } from '@angular/material/form-field'
-import { FormsModule } from '@angular/forms'
+import { FormsModule, FormControl, FormGroupDirective, NgForm, Validators, ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { CustomMatInputAutofocusDirective } from '../custom-mat-input-autofocus.directive'
 import { AuthService } from '../auth.service'
 import { Router } from '@angular/router'
+import { ErrorStateMatcher } from '@angular/material/core'
+
+export class MyErrorStateMatcher implements ErrorStateMatcher {
+    isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
+        const isSubmitted = form && form.submitted
+        return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted))
+    }
+}
 
 @Component({
     selector: 'app-connexion',
@@ -20,6 +28,7 @@ import { Router } from '@angular/router'
         FormsModule,
         MatButtonModule,
         CustomMatInputAutofocusDirective,
+        ReactiveFormsModule,
     ],
     templateUrl: './connexion.component.html',
     styleUrl: './connexion.component.css',
@@ -27,12 +36,12 @@ import { Router } from '@angular/router'
 export class ConnexionComponent {
     authService: AuthService
     router: Router
-    email: string = ''
-    pass: string = ''
     invalidLoginError: boolean = false
-    invalidEmail: boolean = false
-    enableConnexion: boolean = false
-    invalidPass: boolean = false
+
+    matcher = new MyErrorStateMatcher()
+
+    emailFormControl = new FormControl('', [Validators.required, Validators.email])
+    passFormControl = new FormControl('', [Validators.required])
 
     constructor(AuthService: AuthService, router: Router) {
         this.authService = AuthService
@@ -40,37 +49,19 @@ export class ConnexionComponent {
     }
 
     connect() {
-        this.authService.login(this.email, this.pass).then((authentificated: boolean) => {
-            if (authentificated) {
-                this.router.navigate(['/presentation'])
-            } else {
-                this.invalidLoginError = true
-            }
-        })
-    }
+        this.invalidLoginError = false
 
-    // Add a set timeout because on input change trigger before password value update
-    onInputChange(newValue: any) {
-        setTimeout(() => {
-            this.invalidLoginError = false
+        this.emailFormControl.markAllAsTouched()
+        this.passFormControl.markAllAsTouched()
 
-            this.checkEmail()
-            this.checkPass()
-
-            this.checkEnableConnexion()
-        })
-    }
-
-    checkEmail() {
-        const emailPattern: RegExp = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
-        this.invalidEmail = !emailPattern.test(this.email)
-    }
-
-    checkPass() {
-        this.invalidPass = this.pass.length == 0
-    }
-
-    checkEnableConnexion() {
-        this.enableConnexion = !this.invalidEmail && !this.invalidPass
+        if (this.emailFormControl.valid && this.passFormControl.valid) {
+            this.authService.login(this.emailFormControl.value!, this.passFormControl.value!).then((authentificated: boolean) => {
+                if (authentificated) {
+                    this.router.navigate(['/presentation'])
+                } else {
+                    this.invalidLoginError = true
+                }
+            })
+        }
     }
 }

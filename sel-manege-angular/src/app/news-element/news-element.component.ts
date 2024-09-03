@@ -44,21 +44,25 @@ export class NewsElementComponent {
     newsService: NewsService
     @Output() cancelEvent = new EventEmitter<void>()
 
-    titleFormControl = new FormControl('', [Validators.required])
-    descriptionFormControl = new FormControl('', [Validators.required])
-    dateFormControl = new FormControl(null, [this.dateValidator()])
-    matcher = new MyErrorStateMatcher()
-
-    createState: boolean = false
-    editView: boolean = false
-
-    panelOpenState: boolean = false
     panelTitle: string = ''
     panelDate: null | string = null
     panelTime: string | null = null
     panelLocation: string = ''
     panelPrice: string = ''
     panelDescription = ''
+
+    titleFormControl = new FormControl('', [Validators.required])
+    descriptionFormControl = new FormControl('', [Validators.required])
+    dateFormControl = new FormControl('', [this.dateValidator()])
+    timeFormControl = new FormControl('')
+    locationFormControl = new FormControl('')
+    priceFormControl = new FormControl('')
+    matcher = new MyErrorStateMatcher()
+
+    createState: boolean = false
+    editView: boolean = false
+
+    panelOpenState: boolean = false
 
     displayAddError: boolean = false
 
@@ -76,15 +80,35 @@ export class NewsElementComponent {
         this.titleFormControl.markAllAsTouched()
         this.descriptionFormControl.markAllAsTouched()
         this.dateFormControl.markAllAsTouched()
-        
-        const formattedTime: string | null = typeof this.panelTime === 'string' ? this.panelTime + ':00' : null
-        const formattedDate: string | null = typeof this.panelDate === 'string' && this.panelDate != '' ? this.panelDate.toString() : null
-        const formattedLocation: string | null = typeof this.panelLocation === 'string' && this.panelLocation != '' ? this.panelLocation : null
-        const formattedPrice: string | null = typeof this.panelPrice === 'string' && this.panelPrice != '' ? this.panelPrice : null
 
-        if(this.titleFormControl.valid && this.descriptionFormControl.valid && this.dateFormControl.valid) {
-            const success: boolean = await this.newsService.addNews(this.panelTitle, formattedDate, formattedTime, formattedLocation, formattedPrice, this.panelDescription)
-            if(!success) {
+        if (this.titleFormControl.valid && this.descriptionFormControl.valid && this.dateFormControl.valid) {
+            const formattedTime: string | null =
+                typeof this.timeFormControl.value === 'string' && this.timeFormControl.value != ''
+                    ? this.timeFormControl.value + ':00'
+                    : null
+            const formattedDate: string | null =
+                typeof this.dateFormControl.value === 'string' && this.dateFormControl.value != ''
+                    ? this.dateFormControl.value
+                    : null
+            const formattedLocation: string | null =
+                typeof this.locationFormControl.value === 'string' && this.locationFormControl.value != ''
+                    ? this.locationFormControl.value
+                    : null
+            const formattedPrice: string | null =
+                typeof this.priceFormControl.value === 'string' && this.priceFormControl.value != ''
+                    ? this.priceFormControl.value
+                    : null
+
+            const success: boolean = await this.newsService.addNews(
+                this.titleFormControl.value!,
+                formattedDate,
+                formattedTime,
+                formattedLocation,
+                formattedPrice,
+                this.descriptionFormControl.value!,
+            )
+
+            if (!success) {
                 this.displayAddError = true
             } else {
                 this.cancelEvent.emit()
@@ -108,14 +132,12 @@ export class NewsElementComponent {
     }
 
     recetDate() {
-        this.panelDate = null
         const dateInput = document.querySelector('#dateInput') as HTMLInputElement
         dateInput.value = ''
         this.dateFormControl.setErrors(null)
     }
 
     recetTime() {
-        this.panelTime = null
         const timeInput = document.querySelector('#timeInput') as HTMLInputElement
         timeInput.value = ''
     }

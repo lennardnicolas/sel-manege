@@ -45,7 +45,7 @@ app-navbar {
     max-width: 700px;
 }
 
-mat-error {
+.generalMat-error {
     margin-top: 20px;
     padding-right: 10px;
     padding-left: 10px;
