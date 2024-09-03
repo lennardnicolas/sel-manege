@@ -6,9 +6,13 @@
 
 - Angular ui display these news
 
+- Add display news saying they is no news for now if no news exist
+
 - Handle error message if cant fetch on angular ui
 
-- Add possibility to post and manage these posts
+- Add possibility to remove and edit these news
+
+- Unificate the migrations
 
 - Add possibility to see user data (first & last name, email, creation date, activation date)
 
