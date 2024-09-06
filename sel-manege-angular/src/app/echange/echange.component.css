@@ -27,7 +27,7 @@ app-navbar {
     color: #343434;
     cursor: pointer;
     width: 50vw;
-    min-width: 400px;
+    min-width: 300px;
   }
   .toggleContainer::before {
     content: '';

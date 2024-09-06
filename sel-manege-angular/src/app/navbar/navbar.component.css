@@ -1,5 +1,5 @@
 nav {
-    background-color: #3F51B5 !important;
+    background-color: #3f51b5 !important;
     padding: 0;
 }
 
@@ -20,4 +20,12 @@ nav div.container-fluid {
 
 .spacer {
     width: 100% !important;
+}
+@media (max-width: 350px){
+    #navLogo {
+        display: none;
+    }
+    #navSELText {
+        margin-left: 10px;
+    }
 }

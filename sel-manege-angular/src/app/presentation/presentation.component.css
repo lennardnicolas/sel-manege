@@ -13,7 +13,7 @@ app-navbar {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('../../assets/presentation_background.webp');
+    background-image: url('../../assets/presentation-bg.webp');
     background-size: cover;
     background-position: center;
     margin-top: 64px;
@@ -21,12 +21,12 @@ app-navbar {
 .title {
     font-size: 20px;
 }
-@media (min-width: 600px){
+@media (min-width: 600px) {
     .title {
         font-size: 25px;
     }
 }
-@media (min-width: 700px){
+@media (min-width: 700px) {
     .title {
         font-size: 30px;
     }
@@ -51,15 +51,13 @@ app-navbar {
     background-color: #333;
     margin-bottom: 50px;
 }
-#imgExchangeSheme {
-    width: 400px;
-}
 #presentationDesc {
     display: flex;
     justify-content: center;
 }
-#descItem1Div, #descItem2Div{
-    min-width: 400px;
+#descItem1Div,
+#descItem2Div {
+    min-width: 300px;
     width: 45%;
     padding-top: 20px;
     padding-bottom: 20px;
@@ -76,7 +74,7 @@ app-navbar {
 }
 
 #descItem2Div > * {
-    width: 400px;
+    width: 300px;
 }
 .apage {
     height: 100%;
@@ -87,7 +85,7 @@ app-navbar {
 
 @media screen and (max-width: 1000px) {
     .toHideSmallScreen {
-      display: none;
+        display: none;
     }
     #presentationDesc {
         flex-direction: column;
@@ -102,25 +100,76 @@ app-navbar {
     flex-grow: 1;
 }
 .textColor {
-    color: #273C48;
+    color: #273c48;
+}
+.textColor2 {
+    color: white;
 }
 #joinDivText {
+    display: flex;
+    flex-direction: column;
+    margin-top: 70px;
+}
+#joinDivText p {
+    width: 50%;
+    min-width: 300px;
+    text-align: justify;
+    font-size: 25px;
+    line-height: 1.5;
+    padding: 20px;
+}
+#joinDivText > div {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-#joinDivText > p{
-    width: 50%;
-    min-width: 400px;
-    text-align: justify;
-    font-size: 25px;
-    line-height: 1.5;
-    margin-top: 150px;
-    margin-bottom: 70px;
+
+#secondDiv {
+    background-color: #253279;
+    margin-top: 70px;
+    padding-top: 70px;
 }
-#joinButton{
+
+#joinButton {
+    width: 50%;
+    min-width: 300px;
+}
+
+#logo {
+    width: 60vw;
+    margin-top: 40px;
+}
+@media (min-width: 600px) {
+    #logo {
+        width: 50vw;
+    }
+}
+@media (min-width: 600px) {
+    #logo {
+        width: 40vw;
+    }
+}
+@media screen and (min-width: 1001px) {
+    #logo {
+        width: 30vw;
+    }
+}
+
+.selText {
+    color: white;
+    font-size: 5vw;
+    text-align: center;
+    line-height: 1.5;
+    margin-top: 30px;
+}
+@media (max-width: 600px) {
+    .selText {
+        font-size: 10vw;
+    }
+}
+
+#shema {
     width: 30%;
-    margin-bottom: 200px;
     min-width: 300px;
 }

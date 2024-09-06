@@ -14,24 +14,24 @@ app-navbar {
 .presentationPageDisplay {
     display: flex;
     flex-direction: column;
-    background-image: url('../../assets/news_background.jpg');
+    background-image: url('../../assets/presentation-bg.webp');
     background-size: cover;
     background-position: center;
 }
 app-news-element-list {
     width: 80vw;
-    min-width: 400px;
+    min-width: 300px;
 }
 
 #addNewsBtn {
     width: 80vw;
-    min-width: 400px;
+    min-width: 300px;
     margin-top: 30px;
 }
 
 .addNews {
     width: 80vw;
-    min-width: 400px;
+    min-width: 300px;
     margin-top: 10px;
 }
 
@@ -39,5 +39,5 @@ app-news-element-list {
     text-align: center;
     margin-top: 10px;
     width: 80vw;
-    min-width: 400px;
+    min-width: 300px;
 }
