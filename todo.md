@@ -1,5 +1,3 @@
-- Faire un sort que get all news de passe que certains champs et non la table (controller)
-
 - Changer error display (angular) : si code de retour d'api <> 200 et les services passent la reponse d'api direct
 
 - Ajouter display d'une erreur sur fail de getallnews
@@ -7,6 +5,8 @@
 - Add possibility to remove and edit these news
 
 - Unificate the migrations
+
+- Switch to angular 19
 
 - Add possibility to see user data (first & last name, email, creation date, activation date)
 

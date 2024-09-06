@@ -24,7 +24,6 @@ export class NewsController {
             news.location = location
             news.price = price
 
-            
             await this.newsService.create(news)
 
             res.json('News added')
@@ -37,7 +36,24 @@ export class NewsController {
 
     async getAll(req: Request, res: Response) {
         try {
-            res.json(await this.newsService.getAll())
+            const newsList: News[] = await this.newsService.getAll()
+            const newsToSendList: News[] = []
+
+            for (let i = 0; i < newsList.length; i++) {
+                const news: News = new News()
+
+                news.id = newsList[i].id
+                news.description = newsList[i].description
+                news.date = newsList[i].date
+                news.location = newsList[i].location
+                news.price = newsList[i].price
+                news.time = newsList[i].time
+                news.title = newsList[i].title
+
+                newsToSendList.push(news)
+            }
+            
+            res.json(newsToSendList)
         } catch (err) {
             const baseErrMessage: string = 'Error fetching news'
             console.log(baseErrMessage + ' : ' + err)
