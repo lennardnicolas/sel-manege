@@ -8,7 +8,7 @@ import { ENV } from '../../environment/environment'
 export class AuthService {
     constructor() {}
 
-    async login(email: string, pass: string): Promise<boolean> {
+    async login(email: string, pass: string): Promise<any> {
         const options = {
             method: 'POST',
             url: ENV.expressUrl + '/login',
@@ -21,15 +21,14 @@ export class AuthService {
         }
 
         try {
-            const response = await axios.request(options)
-            return response.data
+            return await axios.request(options)
         } catch (err) {
-            console.error('Login request error (In contacting server, not invalid login) : ' + err)
-            return false
+            console.error('Login request error (Not invalid login) : ' + err)
+            return err
         }
     }
 
-    async isAuthenticated(): Promise<boolean> {
+    async isAuthenticated(): Promise<any> {
         const options = {
             method: 'GET',
             url: ENV.expressUrl + '/authenticated',
@@ -38,15 +37,14 @@ export class AuthService {
         }
 
         try {
-            const response = await axios.request(options)
-            return response.data
+            return await axios.request(options)
         } catch (err) {
             console.error('Authenticated request error : ' + err)
-            return false
+            return err
         }
     }
 
-    async logout(): Promise<boolean> {
+    async logout(): Promise<any> {
         const options = {
             method: 'GET',
             url: ENV.expressUrl + '/logout',
@@ -55,11 +53,10 @@ export class AuthService {
         }
 
         try {
-            const response = await axios.request(options)
-            return response.data
+            return await axios.request(options)
         } catch (err) {
             console.error('Logout request error : ' + err)
-            return false
+            return err
         }
     }
 }

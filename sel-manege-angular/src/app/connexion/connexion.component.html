@@ -54,6 +54,11 @@
                     Oups, il semble que la combinaison de cette adresse mail et de ce mot de passe soit invalide...
                 </mat-error>
             }
+            @if (loginErrorDisplay) {
+                <mat-error class="generalMat-error">
+                    Oups, il semble qu'il y aie eu un soucis lors de la tentative de connexion
+                </mat-error>
+            }
         </form>
     </div>
 </div>

@@ -22,8 +22,10 @@ export class NewsComponent {
     @ViewChild(NewsElementListComponent) newsElementListComponent!: NewsElementListComponent
 
     constructor(authService: AuthService) {
-        authService.isAuthenticated().then((isAuthenticated: boolean) => {
-            this.authenticated = isAuthenticated
+        authService.isAuthenticated().then((response: any) => {
+            if (response.status === 200) {
+                this.authenticated = response.data
+            }
         })
     }
 

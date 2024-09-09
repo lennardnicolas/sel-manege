@@ -100,7 +100,7 @@ export class NewsElementComponent {
                     ? this.priceFormControl.value
                     : null
 
-            const success: boolean = await this.newsService.add(
+            const response: any = await this.newsService.add(
                 this.titleFormControl.value!,
                 formattedDate,
                 formattedTime,
@@ -109,11 +109,11 @@ export class NewsElementComponent {
                 this.descriptionFormControl.value!,
             )
 
-            if (!success) {
-                this.displayAddError = true
-            } else {
+            if (response.status === 200 && response.data) {
                 this.newsAddSuccess.emit()
                 this.cancelEvent.emit()
+            } else {
+                this.displayAddError = true
             }
         }
     }

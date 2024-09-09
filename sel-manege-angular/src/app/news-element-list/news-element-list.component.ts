@@ -24,21 +24,31 @@ export class NewsElementListComponent {
 
     reloadNews() {
         this.newsService.getAll().then((response: any) => {
-            if(response.length == 0) {
+            if (response.status === 200) {
+                if (response.data.length == 0) {
+                    this.newsList = [
+                        {
+                            title: 'Aucune news',
+                            description: "Oups, aucune news n'existe pour le moment...",
+                        },
+                    ]
+                } else {
+                    this.newsList = response.data
+                }
+            } else {
                 this.newsList = [
                     {
-                        title: 'Aucune news',
-                        description: 'Oups, aucune news n\'existe pour le moment...'
-                    }
+                        title: 'Erreur',
+                        description:
+                            "Oups, une erreur s'est produite en tentant de charger les news",
+                    },
                 ]
-            } else {
-                this.newsList = response
             }
 
             setTimeout(() => {
                 this.newsElementComponentList.forEach((newsElement: NewsElementComponent, i) => {
                     newsElement.panelTitle = this.newsList[i].title ? this.newsList[i].title : ''
-                    newsElement.panelDescription = this.newsList[i].description ? this.newsList[i].description: ''
+                    newsElement.panelDescription = this.newsList[i].description ? this.newsList[i].description : ''
                     newsElement.panelDate = this.newsList[i].date ? this.newsList[i].date : null
                     newsElement.panelTime = this.newsList[i].time ? this.newsList[i].time : null
                     newsElement.panelLocation = this.newsList[i].location ? this.newsList[i].location : ''

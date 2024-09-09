@@ -15,7 +15,7 @@ export class NewsService {
         location: string | null,
         price: string | null,
         description: string,
-    ): Promise<boolean> {
+    ): Promise<any> {
         const options = {
             method: 'PUT',
             url: ENV.expressUrl + '/news',
@@ -32,15 +32,14 @@ export class NewsService {
         }
 
         try {
-            await axios.request(options)
-            return true
+            return await axios.request(options)
         } catch (err) {
-            console.error('Add news error (In contacting server) : ' + err)
-            return false
+            console.error('Add news error : ' + err)
+            return err
         }
     }
 
-    async getAll(): Promise<boolean | object> {
+    async getAll(): Promise<any> {
         const options = {
             method: 'GET',
             url: ENV.expressUrl + '/allnews',
@@ -48,11 +47,10 @@ export class NewsService {
         }
 
         try {
-            const response = await (await axios.request(options)).data
-            return response
+            return await axios.request(options)
         } catch (err) {
             console.error('Impossible to get all the news : ' + err)
-            return false
+            return err
         }
     }
 }

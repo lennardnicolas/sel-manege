@@ -24,8 +24,8 @@ export class DeconnexionComponent {
     logout() {
         this.displayLogoutLoading = true
 
-        this.authService.logout().then((logoutSuccess: boolean) => {
-            if(logoutSuccess) {
+        this.authService.logout().then((response: any) => {
+            if(response.status === 200 && response.data) {
                 this.displayLogoutLoading = false
                 this.logoutSuccess = true
             } else {

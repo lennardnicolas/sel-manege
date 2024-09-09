@@ -37,6 +37,7 @@ export class ConnexionComponent {
     authService: AuthService
     router: Router
     invalidLoginError: boolean = false
+    loginErrorDisplay = false
 
     matcher = new MyErrorStateMatcher()
 
@@ -50,17 +51,23 @@ export class ConnexionComponent {
 
     connect() {
         this.invalidLoginError = false
+        this.loginErrorDisplay = false
 
         this.emailFormControl.markAllAsTouched()
         this.passFormControl.markAllAsTouched()
 
         if (this.emailFormControl.valid && this.passFormControl.valid) {
-            this.authService.login(this.emailFormControl.value!, this.passFormControl.value!).then((authentificated: boolean) => {
-                if (authentificated) {
-                    this.router.navigate(['/presentation'])
+            this.authService.login(this.emailFormControl.value!, this.passFormControl.value!).then((response: any) => {
+                if(response.status === 200) {
+                    if (response.data) {
+                        this.router.navigate(['/presentation'])
+                    } else {
+                        this.invalidLoginError = true
+                    }
                 } else {
-                    this.invalidLoginError = true
+                    this.loginErrorDisplay = true
                 }
+                
             })
         }
     }
