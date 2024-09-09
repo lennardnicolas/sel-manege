@@ -2,15 +2,20 @@
     <mat-expansion-panel [expanded]="true" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
         <mat-expansion-panel-header class="right-aligned-header">
             <mat-panel-title>
-                @if (editView) {
+                @if (editView && createState) {
                     <span>Nouvelle news</span>
+                } @else if (editView) {
+                    <span>Edition news</span>
                 } @else {
                     <span>{{ panelTitle }}</span>
-                }
+                } 
             </mat-panel-title>
             <mat-panel-description class="panelDescription">
                 <span></span>
                 <span></span>
+                @if (authenticated && !editView && panelId) {
+                    <i (click)="edit($event)" class="bi bi-pencil-fill editIcon"></i>
+                }
             </mat-panel-description>
         </mat-expansion-panel-header>
         @if (editView) {
@@ -18,6 +23,7 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Titre</mat-label>
                     <input
+                        id="titleInput"
                         appCustomMatInputAutofocus
                         [formControl]="titleFormControl"
                         [errorStateMatcher]="matcher"
@@ -39,7 +45,7 @@
                 <mat-form-field class="textColor" class="percent80Width">
                     <mat-label class="textColor">Date</mat-label>
                     <input
-                        id = 'dateInput'
+                        id="dateInput"
                         [formControl]="dateFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelDate"
@@ -68,7 +74,7 @@
                 <mat-form-field class="textColor" class="percent80Width">
                     <mat-label class="textColor">Heure</mat-label>
                     <input
-                        id = 'timeInput'
+                        id="timeInput"
                         [formControl]="timeFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelTime"
@@ -94,6 +100,7 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Lieu</mat-label>
                     <input
+                        id="locationInput"
                         [formControl]="locationFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelLocation"
@@ -118,6 +125,7 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Prix</mat-label>
                     <input
+                        id="priceInput"
                         [formControl]="priceFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelPrice"
@@ -142,6 +150,7 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Description</mat-label>
                     <textarea
+                        id="descriptionInput"
                         [formControl]="descriptionFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelDescription"

@@ -47,6 +47,7 @@ export class NewsElementListComponent {
 
             setTimeout(() => {
                 this.newsElementComponentList.forEach((newsElement: NewsElementComponent, i) => {
+                    newsElement.panelId = this.newsList[i].id ? this.newsList[i].id : null
                     newsElement.panelTitle = this.newsList[i].title ? this.newsList[i].title : ''
                     newsElement.panelDescription = this.newsList[i].description ? this.newsList[i].description : ''
                     newsElement.panelDate = this.newsList[i].date ? this.newsList[i].date : null

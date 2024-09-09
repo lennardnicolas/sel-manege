@@ -17,6 +17,7 @@ import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatButtonModule } from '@angular/material/button'
 import { CustomMatInputAutofocusDirective } from '../custom-mat-input-autofocus.directive'
 import { NewsService } from '../news.service'
+import { AuthService } from '../auth.service'
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
     isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
@@ -42,9 +43,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class NewsElementComponent {
     newsService: NewsService
+    authService: AuthService
+
+    authenticated: boolean = false
+
     @Output() cancelEvent = new EventEmitter<void>()
     @Output() newsAddSuccess = new EventEmitter<void>()
 
+    panelId!: number | null
     panelTitle!: string
     panelDate!: string | null
     panelTime!: string | null
@@ -67,8 +73,15 @@ export class NewsElementComponent {
 
     displayAddError: boolean = false
 
-    constructor(newsService: NewsService) {
+    constructor(newsService: NewsService, authService: AuthService) {
         this.newsService = newsService
+        this.authService = authService
+
+        this.authService.isAuthenticated().then((response) => {
+            if(response.status === 200) {
+                this.authenticated = response.data
+            }
+        })
     }
 
     cancel() {
@@ -142,5 +155,37 @@ export class NewsElementComponent {
     recetTime() {
         const timeInput = document.querySelector('#timeInput') as HTMLInputElement
         timeInput.value = ''
+        this.timeFormControl.setErrors(null)
+    }
+
+    edit(event: Event) {
+        event.stopPropagation()
+        this.editView = true
+        
+        setTimeout(() => {
+            const titleInput = document.querySelector('#titleInput') as HTMLInputElement
+            titleInput.value = this.panelTitle
+            this.titleFormControl.setErrors(null)
+
+            const descriptionInput = document.querySelector('#descriptionInput') as HTMLInputElement
+            descriptionInput.value = this.panelDescription
+            this.descriptionFormControl.setErrors(null)
+
+            const timeInput = document.querySelector('#timeInput') as HTMLInputElement
+            timeInput.value = this.panelTime ? this.panelTime : ''
+            this.timeFormControl.setErrors(null)
+
+            const dateInput = document.querySelector('#dateInput') as HTMLInputElement
+            dateInput.value = this.panelDate ? this.panelDate : ''
+            this.dateFormControl.setErrors(null)
+
+            const locationInput = document.querySelector('#locationInput') as HTMLInputElement
+            locationInput.value = this.panelLocation ? this.panelLocation : ''
+            this.locationFormControl.setErrors(null)
+
+            const priceInput = document.querySelector('#priceInput') as HTMLInputElement
+            priceInput.value = this.panelPrice ? this.panelPrice : ''
+            this.priceFormControl.setErrors(null)
+        }, 0)
     }
 }
