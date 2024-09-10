@@ -1,12 +1,22 @@
 - Add possibility to remove and edit these news
 
+- Organisate angular structure gerneral dir, component dir, services dir
+
 - Unificate the migrations
 
 - Switch to angular 18
 
+- Simplificate read me by reducing size and add statement to adapt .sh by .ps1 depending on the os
+
+- Simplificate news element (set mode for creation, edit, display) and render group rendering
+
 - Add possibility to see user data (first & last name, email, creation date, activation date)
 
 - Add possibility to add user (first & last name, email) and when the user is created, it send a mail with a link who have an long key in the get to activate the account. On the activate account page, if the account dont have any pass, it prompt a password field. Allow account activation only when key + password fill. Use the domain nicolas-lennard.com for the mail now. Save each type of mail send in a table with the date & time & reciver email to avoid spam.
+
+- Use of angular date picker insted of the input of type date now used
+
+- Check to replace the time picker by a better one 
 
 - Add possibility to change password (Even for non activated account, and it activate account on the password recet action)
 
