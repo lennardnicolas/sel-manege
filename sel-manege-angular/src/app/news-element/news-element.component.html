@@ -3,11 +3,11 @@
         <mat-expansion-panel-header class="right-aligned-header">
             <mat-panel-title>
                 @if (editView && createState) {
-                    <span>Nouvelle news</span>
+                    <span class="textColor">Nouvelle news</span>
                 } @else if (editView) {
-                    <span>Edition news</span>
+                    <span class="textColor">Edition news</span>
                 } @else {
-                    <span>{{ panelTitle }}</span>
+                    <span class="textColor">{{ panelTitle }}</span>
                 } 
             </mat-panel-title>
             <mat-panel-description class="panelDescription">

@@ -1,5 +1,5 @@
 footer {
-    background-color: #253279;
+    background-color: rgb(3, 99, 3);
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -7,7 +7,7 @@ footer {
     overflow: hidden;
 }
 .footerBottom{
-    background-color: #121944;
+    background-color: #003a03;
     padding: 20px;
     text-align: center;
     width: 100%;

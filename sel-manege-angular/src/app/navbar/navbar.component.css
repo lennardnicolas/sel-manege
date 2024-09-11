@@ -1,10 +1,11 @@
 nav {
-    background-color: #3f51b5 !important;
+    background-color: white;
     padding: 0;
+    height: 46.63px;
 }
 
 nav img {
-    height: 64px;
+    height: 46.63px;
     margin-right: 20px;
 }
 
@@ -13,7 +14,7 @@ nav div.container-fluid {
 }
 
 .nav-item a {
-    height: 64px;
+    height: 46.63px;
     width: 100%;
     padding: 20px;
 }
@@ -21,11 +22,30 @@ nav div.container-fluid {
 .spacer {
     width: 100% !important;
 }
-@media (max-width: 350px){
+@media (max-width: 350px) {
     #navLogo {
         display: none;
     }
     #navSELText {
         margin-left: 10px;
     }
+}
+.textColor {
+    color: green !important;
+}
+#expandNavIcon {
+    color: green !important;
+    font-size: 35px;
+}
+#expandNavBtn:hover {
+    background-color: #f5f5f5;
+}
+
+.navbar-toggler:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.navbar-nav .nav-link {
+    border-radius: 0;
 }
