@@ -1,5 +1,7 @@
 - Add possibility to remove and edit these news
 
+- Correct bug where possible to add 2 news by clicking 2 time fast add button on slow network connexion (It launch 2 time the request before the 1 st one complited and result make effect)
+
 - Rename DOMAIN settings to express domain
 
 - Organisate angular structure gerneral dir, component dir, services dir
