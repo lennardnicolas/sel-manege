@@ -72,4 +72,4 @@ Futur possible évolution :
 
 - Add économy system with members, rôles and exchange, demand, offer insted of comunity forge
 
-- Add news letter
+- Migrate server dedicated server for prod
