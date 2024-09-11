@@ -1,5 +1,7 @@
 - Add possibility to remove and edit these news
 
+- Rename DOMAIN settings to express domain
+
 - Organisate angular structure gerneral dir, component dir, services dir
 
 - Unificate the migrations
