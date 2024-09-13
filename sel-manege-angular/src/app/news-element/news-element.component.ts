@@ -251,5 +251,6 @@ export class NewsElementComponent {
     cancelEdit() {
         this.editView = false
         this.editState = false
+        this.displayEditError = false
     }
 }
