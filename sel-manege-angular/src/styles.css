@@ -8,7 +8,7 @@ body {
     margin: 0;
 }
 * {
-    font-family: UploadedRobotoBold, UploadedRobotoRegular !important;
+    font-family: UploadedGtFlexaMeduim !important;
 }
 @font-face {
     font-family: 'UploadedRobotoRegular';
@@ -23,6 +23,22 @@ body {
     src:
         url('./assets/fonts/roboto/roboto-bold.woff2') format('woff2'),
         url('./assets/fonts/roboto/roboto-bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UploadedGtFlexaMeduim';
+    src:
+        url('./assets/fonts/gt-flexa/gt-flexa-meduim.woff2') format('woff2'),
+        url('./assets/fonts/gt-flexa/gt-flexa-meduim.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UploadedGtFlexaBold';
+    src:
+        url('./assets/fonts/gt-flexa/gt-flexa-extended-bold.woff2') format('woff2'),
+        url('./assets/fonts/gt-flexa/gt-flexa-extended-bold.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
