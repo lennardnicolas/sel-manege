@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core'
+import { Component, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatInputModule } from '@angular/material/input'
 import {
@@ -50,6 +50,13 @@ export class NewsElementComponent {
     @Output() cancelEvent = new EventEmitter<void>()
     @Output() newsAddSuccess = new EventEmitter<void>()
 
+    @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>
+    @ViewChild('timeInput') timeInput!: ElementRef<HTMLInputElement>
+    @ViewChild('priceInput') priceInput!: ElementRef<HTMLInputElement>
+    @ViewChild('locationInput') locationInput!: ElementRef<HTMLInputElement>
+    @ViewChild('titleInput') titleInput!: ElementRef<HTMLInputElement>
+    @ViewChild('descriptionInput') descriptionInput!: ElementRef<HTMLInputElement>
+
     panelId!: number | null
     panelTitle!: string
     panelDate!: string | null
@@ -78,7 +85,7 @@ export class NewsElementComponent {
         this.authService = authService
 
         this.authService.isAuthenticated().then((response) => {
-            if(response.status === 200) {
+            if (response.status === 200) {
                 this.authenticated = response.data
             }
         })
@@ -147,44 +154,36 @@ export class NewsElementComponent {
     }
 
     recetDate() {
-        const dateInput = document.querySelector('#dateInput') as HTMLInputElement
-        dateInput.value = ''
+        this.dateInput.nativeElement.value = ''
         this.dateFormControl.setErrors(null)
     }
 
     recetTime() {
-        const timeInput = document.querySelector('#timeInput') as HTMLInputElement
-        timeInput.value = ''
+        this.timeInput.nativeElement.value = ''
         this.timeFormControl.setErrors(null)
     }
 
     edit(event: Event) {
         event.stopPropagation()
         this.editView = true
-        
+
         setTimeout(() => {
-            const titleInput = document.querySelector('#titleInput') as HTMLInputElement
-            titleInput.value = this.panelTitle
+            this.titleInput.nativeElement.value = this.panelTitle
             this.titleFormControl.setErrors(null)
 
-            const descriptionInput = document.querySelector('#descriptionInput') as HTMLInputElement
-            descriptionInput.value = this.panelDescription
+            this.descriptionInput.nativeElement.value = this.panelDescription
             this.descriptionFormControl.setErrors(null)
 
-            const timeInput = document.querySelector('#timeInput') as HTMLInputElement
-            timeInput.value = this.panelTime ? this.panelTime : ''
+            this.timeInput.nativeElement.value = this.panelTime ? this.panelTime : ''
             this.timeFormControl.setErrors(null)
 
-            const dateInput = document.querySelector('#dateInput') as HTMLInputElement
-            dateInput.value = this.panelDate ? this.panelDate : ''
+            this.dateInput.nativeElement.value = this.panelDate ? this.panelDate : ''
             this.dateFormControl.setErrors(null)
 
-            const locationInput = document.querySelector('#locationInput') as HTMLInputElement
-            locationInput.value = this.panelLocation ? this.panelLocation : ''
+            this.locationInput.nativeElement.value = this.panelLocation ? this.panelLocation : ''
             this.locationFormControl.setErrors(null)
 
-            const priceInput = document.querySelector('#priceInput') as HTMLInputElement
-            priceInput.value = this.panelPrice ? this.panelPrice : ''
+            this.priceInput.nativeElement.value = this.panelPrice ? this.panelPrice : ''
             this.priceFormControl.setErrors(null)
         }, 0)
     }

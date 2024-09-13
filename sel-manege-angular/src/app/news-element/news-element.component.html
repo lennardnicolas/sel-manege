@@ -23,7 +23,7 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Titre</mat-label>
                     <input
-                        id="titleInput"
+                        #titleInput
                         appCustomMatInputAutofocus
                         [formControl]="titleFormControl"
                         [errorStateMatcher]="matcher"
@@ -45,7 +45,7 @@
                 <mat-form-field class="textColor" class="percent80Width">
                     <mat-label class="textColor">Date</mat-label>
                     <input
-                        id="dateInput"
+                        #dateInput
                         [formControl]="dateFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelDate"
@@ -74,7 +74,7 @@
                 <mat-form-field class="textColor" class="percent80Width">
                     <mat-label class="textColor">Heure</mat-label>
                     <input
-                        id="timeInput"
+                        #timeInput
                         [formControl]="timeFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelTime"
@@ -100,7 +100,7 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Lieu</mat-label>
                     <input
-                        id="locationInput"
+                        #locationInput
                         [formControl]="locationFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelLocation"
@@ -125,7 +125,7 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Prix</mat-label>
                     <input
-                        id="priceInput"
+                        #priceInput
                         [formControl]="priceFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelPrice"
@@ -150,7 +150,7 @@
                 <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Description</mat-label>
                     <textarea
-                        id="descriptionInput"
+                        #descriptionInput
                         [formControl]="descriptionFormControl"
                         [errorStateMatcher]="matcher"
                         name="panelDescription"
