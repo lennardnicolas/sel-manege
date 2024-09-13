@@ -20,6 +20,8 @@
 
 - Use of angular date picker insted of the input of type date now used
 
+- Make a sort that js, html and css are compressed for faster loading slow connexion
+
 - Check to replace the time picker by a better one 
 
 - Add possibility to change password (Even for non activated account, and it activate account on the password recet action)
