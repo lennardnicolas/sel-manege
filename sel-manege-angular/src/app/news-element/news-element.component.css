@@ -28,7 +28,7 @@ p {
 .successColorBg {
     background-color: #29c01b;
 }
-#addError {
+#addError, #editError {
     text-align: center;
     margin-top: 10px;
 }

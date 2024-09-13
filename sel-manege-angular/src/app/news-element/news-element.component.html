@@ -8,7 +8,7 @@
                     <span class="textColor">Edition news</span>
                 } @else {
                     <span class="textColor">{{ panelTitle }}</span>
-                } 
+                }
             </mat-panel-title>
             <mat-panel-description class="panelDescription">
                 <span></span>
@@ -171,11 +171,25 @@
 
         @if (createState) {
             <button mat-flat-button color="warn" (click)="cancel()" class="percent50Width">Annuler</button>
-            <button mat-flat-button (click)="add()" class="percent50Width successColorBg text-white">Ajouter</button>
+            <button
+                mat-flat-button
+                [disabled]="addBtnDisabled"
+                (click)="add()"
+                class="percent50Width successColorBg text-white"
+            >
+                Ajouter
+            </button>
+        }
+        @if (editState) {
+            <button mat-flat-button color="warn" (click)="cancel()" class="percent50Width">Annuler</button>
+            <button mat-flat-button [disabled]="editBtnDisabled" (click)="update()" class="percent50Width successColorBg text-white">Editer</button>
         }
 
         @if (displayAddError) {
             <mat-error id="addError">Une erreur est survenue lors de l'ajout de la news</mat-error>
+        }
+        @if (displayAddError) {
+            <mat-error id="editError">Une erreur est survenue lors de l'edition de la news</mat-error>
         }
     </mat-expansion-panel>
 </mat-accordion>

@@ -17,6 +17,7 @@ export class NewsComponent {
     authenticated: boolean = false
     displayCreateNews: boolean = false
     displaySuccesAddNews: boolean = false
+    displaySuccesEditNews: boolean = false
 
     @ViewChild(NewsElementComponent) newsElementComponent!: NewsElementComponent
     @ViewChild(NewsElementListComponent) newsElementListComponent!: NewsElementListComponent
@@ -52,5 +53,13 @@ export class NewsComponent {
         }, 5000)
 
         this.newsElementListComponent.reloadNews()
+    }
+
+    newsEditedSuccess() {
+        this.displaySuccesEditNews = true
+
+        setTimeout(() => {
+            this.displaySuccesEditNews = false
+        }, 5000)
     }
 }

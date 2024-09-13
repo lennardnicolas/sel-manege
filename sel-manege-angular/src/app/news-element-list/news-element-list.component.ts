@@ -1,4 +1,4 @@
-import { Component, ViewChildren, QueryList } from '@angular/core'
+import { Component, ViewChildren, QueryList, Output, EventEmitter } from '@angular/core'
 import { NewsElementComponent } from '../news-element/news-element.component'
 import { NewsService } from '../news.service'
 
@@ -13,6 +13,8 @@ export class NewsElementListComponent {
     newsService: NewsService
 
     newsList: any = []
+
+    @Output() newsEditSuccess = new EventEmitter<void>()
 
     @ViewChildren(NewsElementComponent) newsElementComponentList!: QueryList<NewsElementComponent>
 
@@ -51,11 +53,15 @@ export class NewsElementListComponent {
                     newsElement.panelTitle = this.newsList[i].title ? this.newsList[i].title : ''
                     newsElement.panelDescription = this.newsList[i].description ? this.newsList[i].description : ''
                     newsElement.panelDate = this.newsList[i].date ? this.newsList[i].date : null
-                    newsElement.panelTime = this.newsList[i].time ? this.newsList[i].time : null
+                    newsElement.panelTime = this.newsList[i].time ? this.newsList[i].time.substring(0, 5) : null
                     newsElement.panelLocation = this.newsList[i].location ? this.newsList[i].location : ''
                     newsElement.panelPrice = this.newsList[i].price ? this.newsList[i].price : ''
                 })
             }, 0)
         })
+    }
+
+    newsEditedSuccess() {
+        this.newsEditSuccess.emit()
     }
 }

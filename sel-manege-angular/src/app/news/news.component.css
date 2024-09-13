@@ -33,7 +33,7 @@ app-news-element-list {
     margin-top: 10px;
 }
 
-#addNewsSuccess {
+#addNewsSuccess, #editNewsSuccess {
     text-align: center;
     margin-top: 10px;
     width: 80vw;

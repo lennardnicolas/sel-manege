@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output, ViewChild, ElementRef } from '@angular/core'
+import { Component, EventEmitter, Output } from '@angular/core'
 import { MatExpansionModule } from '@angular/material/expansion'
 import { MatInputModule } from '@angular/material/input'
 import {
@@ -49,13 +49,10 @@ export class NewsElementComponent {
 
     @Output() cancelEvent = new EventEmitter<void>()
     @Output() newsAddSuccess = new EventEmitter<void>()
+    @Output() newsEditSuccess = new EventEmitter<void>()
 
-    @ViewChild('dateInput') dateInput!: ElementRef<HTMLInputElement>
-    @ViewChild('timeInput') timeInput!: ElementRef<HTMLInputElement>
-    @ViewChild('priceInput') priceInput!: ElementRef<HTMLInputElement>
-    @ViewChild('locationInput') locationInput!: ElementRef<HTMLInputElement>
-    @ViewChild('titleInput') titleInput!: ElementRef<HTMLInputElement>
-    @ViewChild('descriptionInput') descriptionInput!: ElementRef<HTMLInputElement>
+    addBtnDisabled = false
+    editBtnDisabled = false
 
     panelId!: number | null
     panelTitle!: string
@@ -74,11 +71,13 @@ export class NewsElementComponent {
     matcher = new MyErrorStateMatcher()
 
     createState: boolean = false
+    editState: boolean = false
     editView: boolean = false
 
     panelOpenState: boolean = false
 
     displayAddError: boolean = false
+    displayEditError: boolean = false
 
     constructor(newsService: NewsService, authService: AuthService) {
         this.newsService = newsService
@@ -120,6 +119,9 @@ export class NewsElementComponent {
                     ? this.priceFormControl.value
                     : null
 
+
+            this.addBtnDisabled = true
+
             const response: any = await this.newsService.add(
                 this.titleFormControl.value!,
                 formattedDate,
@@ -128,6 +130,8 @@ export class NewsElementComponent {
                 formattedPrice,
                 this.descriptionFormControl.value!,
             )
+
+            this.addBtnDisabled = false
 
             if (response.status === 200 && response.data) {
                 this.newsAddSuccess.emit()
@@ -154,37 +158,93 @@ export class NewsElementComponent {
     }
 
     recetDate() {
-        this.dateInput.nativeElement.value = ''
+        this.dateFormControl.setValue('')
         this.dateFormControl.setErrors(null)
     }
 
     recetTime() {
-        this.timeInput.nativeElement.value = ''
+        this.timeFormControl.setValue('')
         this.timeFormControl.setErrors(null)
     }
 
     edit(event: Event) {
         event.stopPropagation()
         this.editView = true
+        this.editState = true
 
         setTimeout(() => {
-            this.titleInput.nativeElement.value = this.panelTitle
+            this.titleFormControl.setValue(this.panelTitle)
             this.titleFormControl.setErrors(null)
 
-            this.descriptionInput.nativeElement.value = this.panelDescription
+            this.descriptionFormControl.setValue(this.panelDescription)
             this.descriptionFormControl.setErrors(null)
 
-            this.timeInput.nativeElement.value = this.panelTime ? this.panelTime : ''
+            this.timeFormControl.setValue(this.panelTime ? this.panelTime : '')
             this.timeFormControl.setErrors(null)
 
-            this.dateInput.nativeElement.value = this.panelDate ? this.panelDate : ''
+            this.dateFormControl.setValue(this.panelDate ? this.panelDate : '')
             this.dateFormControl.setErrors(null)
 
-            this.locationInput.nativeElement.value = this.panelLocation ? this.panelLocation : ''
+            this.locationFormControl.setValue(this.panelLocation ? this.panelLocation : '')
             this.locationFormControl.setErrors(null)
 
-            this.priceInput.nativeElement.value = this.panelPrice ? this.panelPrice : ''
+            this.priceFormControl.setValue(this.panelPrice ? this.panelPrice : '')
             this.priceFormControl.setErrors(null)
         }, 0)
+    }
+
+    async update() {
+        this.displayEditError = false
+
+        this.titleFormControl.markAllAsTouched()
+        this.descriptionFormControl.markAllAsTouched()
+        this.dateFormControl.markAllAsTouched()
+
+        if (this.titleFormControl.valid && this.descriptionFormControl.valid && this.dateFormControl.valid) {
+            const formattedTime: string | null =
+                typeof this.timeFormControl.value === 'string' && this.timeFormControl.value != ''
+                    ? this.timeFormControl.value + ':00'
+                    : null
+            const formattedDate: string | null =
+                typeof this.dateFormControl.value === 'string' && this.dateFormControl.value != ''
+                    ? this.dateFormControl.value
+                    : null
+            const formattedLocation: string | null =
+                typeof this.locationFormControl.value === 'string' && this.locationFormControl.value != ''
+                    ? this.locationFormControl.value
+                    : null
+            const formattedPrice: string | null =
+                typeof this.priceFormControl.value === 'string' && this.priceFormControl.value != ''
+                    ? this.priceFormControl.value
+                    : null
+
+            this.editBtnDisabled = true
+
+            const response: any = await this.newsService.update(
+                this.panelId!,
+                this.titleFormControl.value!,
+                formattedDate,
+                formattedTime,
+                formattedLocation,
+                formattedPrice,
+                this.descriptionFormControl.value!
+            )
+
+            this.editBtnDisabled = false
+
+            if (response.status === 200 && response.data) {
+                this.panelTitle = this.titleFormControl.value!
+                this.panelDescription = this.descriptionFormControl.value!
+                this.panelDate = this.dateFormControl.value
+                this.panelTime = this.timeFormControl.value
+                this.panelPrice = this.priceFormControl.value ? this.priceFormControl.value : ''
+                this.panelLocation = this.locationFormControl.value ? this.locationFormControl.value : ''
+                this.newsEditSuccess.emit()
+                this.editState = false
+                this.editView = false
+            } else {
+                this.displayEditError = true
+            }
+        }
     }
 }
