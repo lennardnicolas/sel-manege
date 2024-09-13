@@ -247,4 +247,9 @@ export class NewsElementComponent {
             }
         }
     }
+
+    cancelEdit() {
+        this.editView = false
+        this.editState = false
+    }
 }
