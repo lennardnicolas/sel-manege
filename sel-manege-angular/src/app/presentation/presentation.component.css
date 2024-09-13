@@ -13,10 +13,8 @@ app-navbar {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    background-image: url('../../assets/presentation-bg.webp');
     background-size: cover;
     background-position: center;
-    margin-top: 46.63px;
 }
 .title {
     font-size: 20px;

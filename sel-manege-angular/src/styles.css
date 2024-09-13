@@ -44,6 +44,10 @@ body {
 }
 .pageView {
     min-height: 100%;
+    padding-top: 46.63px;
+    background-image: url('./assets/presentation-bg.webp');
+    background-size: cover;
+    background-position: center;
 }
 .semiPageView {
     min-height: 50%;
