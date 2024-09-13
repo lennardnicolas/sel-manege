@@ -28,7 +28,37 @@ export class NewsController {
 
             res.json('News added')
         } catch (err) {
-            const baseErrMessage: string = 'Error when adding news'
+            const baseErrMessage: string = 'Error when adding the news'
+            console.log(baseErrMessage + ' : ' + err)
+            res.status(500).json(baseErrMessage)
+        }
+    }
+
+    async update(req: Request, res: Response) {
+        const id: number = req.body.id
+        const title: string = req.body.title
+        const description: string = req.body.description
+        const date: Date | null = req.body.date ? new Date(req.body.date) : null
+        const time: string | null = req.body.time ? req.body.time : null
+        const location: string | null = req.body.location ? req.body.location : null
+        const price: string | null = req.body.price ? req.body.price : null
+
+        try {
+            const news = new News()
+            news.id = id
+            news.userId = req.session.authenticatedUserID!
+            news.title = title
+            news.description = description
+            news.time = time
+            news.date = date
+            news.location = location
+            news.price = price
+
+            await this.newsService.update(news)
+
+            res.json('News updated')
+        } catch (err) {
+            const baseErrMessage: string = 'Error when updating the news'
             console.log(baseErrMessage + ' : ' + err)
             res.status(500).json(baseErrMessage)
         }
@@ -52,7 +82,7 @@ export class NewsController {
 
                 newsToSendList.push(news)
             }
-            
+
             res.json(newsToSendList)
         } catch (err) {
             const baseErrMessage: string = 'Error fetching news'

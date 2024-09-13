@@ -13,6 +13,14 @@ export class NewsService {
     }
 
     async update(news: News): Promise<News> {
+        if (!news.id) {
+            throw new Error('News id missing')
+        }
+
+        if(!await this.newsModel.getOneByID(news.id)) {
+            throw new Error('News dont exist')
+        }
+
         return this.newsModel.save(news)
     }
 
