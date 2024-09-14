@@ -28,7 +28,7 @@ export class ExpressServer {
 
         const corsOptions = {
             origin: angularUrl,
-            methods: 'GET, POST, PUT', // Other type are HEAD,PATCH,DELETE
+            methods: 'GET, POST, PUT, DELETE', // Other type are HEAD,PATCH
             allowedHeaders: ['Content-Type', 'Authorization'],
             credentials: true,
         }

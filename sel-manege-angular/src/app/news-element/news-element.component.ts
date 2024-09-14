@@ -50,9 +50,11 @@ export class NewsElementComponent {
     @Output() cancelEvent = new EventEmitter<void>()
     @Output() newsAddSuccess = new EventEmitter<void>()
     @Output() newsEditSuccess = new EventEmitter<void>()
+    @Output() newsDeleteSuccess = new EventEmitter<void>()
 
     addBtnDisabled = false
     editBtnDisabled = false
+    deleteBtnDisabled = false
 
     panelId!: number | null
     panelTitle!: string
@@ -78,6 +80,7 @@ export class NewsElementComponent {
 
     displayAddError: boolean = false
     displayEditError: boolean = false
+    displayDeleteError: boolean = false
 
     constructor(newsService: NewsService, authService: AuthService) {
         this.newsService = newsService
@@ -252,5 +255,30 @@ export class NewsElementComponent {
         this.editView = false
         this.editState = false
         this.displayEditError = false
+    }
+
+    async delete(event: Event) {
+        event.stopPropagation()
+
+        if(!this.deleteBtnDisabled) {
+            this.deleteBtnDisabled = true
+            this.displayDeleteError = false
+
+            const response: any = await this.newsService.delete(
+                this.panelId!,
+            )
+            
+            if (response.status === 200 && response.data) {
+                this.newsDeleteSuccess.emit()
+            } else {
+                this.displayDeleteError = true
+
+                setTimeout(() => {
+                    this.displayDeleteError = false
+                }, 5000)
+            }
+            
+            this.deleteBtnDisabled = false
+        }
     }
 }

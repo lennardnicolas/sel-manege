@@ -18,6 +18,7 @@ export class NewsComponent {
     displayCreateNews: boolean = false
     displaySuccesAddNews: boolean = false
     displaySuccesEditNews: boolean = false
+    displaySuccesDeleteNews: boolean = false
 
     @ViewChild(NewsElementComponent) newsElementComponent!: NewsElementComponent
     @ViewChild(NewsElementListComponent) newsElementListComponent!: NewsElementListComponent
@@ -60,6 +61,14 @@ export class NewsComponent {
 
         setTimeout(() => {
             this.displaySuccesEditNews = false
+        }, 5000)
+    }
+
+    newsDeletedSuccess() {
+        this.displaySuccesDeleteNews = true
+
+        setTimeout(() => {
+            this.displaySuccesDeleteNews = false
         }, 5000)
     }
 }

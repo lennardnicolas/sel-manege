@@ -72,6 +72,25 @@ export class NewsService {
         }
     }
 
+    async delete(id: number): Promise<any> {
+        const options = {
+            method: 'DELETE',
+            url: ENV.expressUrl + '/news',
+            data: {
+                id: id,
+            },
+            headers: { 'Content-Type': 'application/json' },
+            withCredentials: true,
+        }
+
+        try {
+            return await axios.request(options)
+        } catch (err) {
+            console.error('Delete news error : ' + err)
+            return err
+        }
+    }
+
     async getAll(): Promise<any> {
         const options = {
             method: 'GET',

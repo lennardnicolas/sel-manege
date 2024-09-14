@@ -15,6 +15,7 @@ export class NewsElementListComponent {
     newsList: any = []
 
     @Output() newsEditSuccess = new EventEmitter<void>()
+    @Output() newsDeleteSuccess = new EventEmitter<void>()
 
     @ViewChildren(NewsElementComponent) newsElementComponentList!: QueryList<NewsElementComponent>
 
@@ -63,5 +64,10 @@ export class NewsElementListComponent {
 
     newsEditedSuccess() {
         this.newsEditSuccess.emit()
+    }
+
+    newsDeletedSuccess() {
+        this.newsDeleteSuccess.emit()
+        this.reloadNews()
     }
 }

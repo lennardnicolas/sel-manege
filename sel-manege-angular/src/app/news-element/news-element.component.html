@@ -16,6 +16,9 @@
                 @if (authenticated && !editView && panelId) {
                     <i (click)="edit($event)" class="bi bi-pencil-fill editIcon"></i>
                 }
+                @if (authenticated && !editView && panelId) {
+                    <i (click)="delete($event)" class="bi bi-trash-fill deleteIcon"></i>
+                }
             </mat-panel-description>
         </mat-expansion-panel-header>
         @if (editView) {
@@ -190,6 +193,9 @@
         }
         @if (displayEditError) {
             <mat-error id="editError">Une erreur est survenue lors de l'edition de la news</mat-error>
+        }
+        @if (displayDeleteError) {
+            <mat-error id="deleteError">Une erreur est survenue lors de la supression de la news</mat-error>
         }
     </mat-expansion-panel>
 </mat-accordion>

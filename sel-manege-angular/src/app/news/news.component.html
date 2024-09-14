@@ -11,6 +11,9 @@
         @if (displaySuccesEditNews) {
             <div id="editNewsSuccess" class="alert alert-success" role="alert">News editée</div>
         }
+        @if (displaySuccesDeleteNews) {
+            <div id="deleteNewsSuccess" class="alert alert-success" role="alert">News supprimée</div>
+        }
 
         @if (displayCreateNews) {
             <app-news-element
@@ -19,7 +22,10 @@
                 class="addNews"
             ></app-news-element>
         }
-        <app-news-element-list (newsEditSuccess)="newsEditedSuccess()"></app-news-element-list>
+        <app-news-element-list
+            (newsEditSuccess)="newsEditedSuccess()"
+            (newsDeleteSuccess)="newsDeletedSuccess()"
+        ></app-news-element-list>
     </div>
 </div>
 <app-footer></app-footer>
