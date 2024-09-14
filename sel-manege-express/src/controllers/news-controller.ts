@@ -64,6 +64,24 @@ export class NewsController {
         }
     }
 
+    async delete(req: Request, res: Response) {
+        const id: number = req.body.id
+
+        try {
+            const deleteResponse = await this.newsService.delete(id)
+
+            if(deleteResponse.affected == 0) {
+                throw new Error('No news exist with this id')
+            }
+
+            res.json('News deleted')
+        } catch (err) {
+            const baseErrMessage: string = 'Error when deleting the news'
+            console.log(baseErrMessage + ' : ' + err)
+            res.status(500).json(baseErrMessage)
+        }
+    }
+
     async getAll(req: Request, res: Response) {
         try {
             const newsList: News[] = await this.newsService.getAll()

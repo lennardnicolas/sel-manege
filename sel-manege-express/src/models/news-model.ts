@@ -1,5 +1,6 @@
 import { dataSource } from '../data-source.js'
 import { News } from '../entities/news.js'
+import { DeleteResult } from 'typeorm'
 
 export class NewsModel {
     async getOneByID(id: number): Promise<News | null> {
@@ -19,5 +20,10 @@ export class NewsModel {
     async save(news: News): Promise<News> {
         const newsRepository = dataSource.getRepository(News)
         return newsRepository.save(news)
+    }
+
+    async delete(id: number): Promise<DeleteResult> {
+        const newsRepository = dataSource.getRepository(News)
+        return newsRepository.delete(id)
     }
 }

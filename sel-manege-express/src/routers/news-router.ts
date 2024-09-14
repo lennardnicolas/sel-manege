@@ -6,6 +6,8 @@ import { newsPutNewsJsonValidatorShema } from '../schemas/news-put-news-json-val
 import { newsPostNewsJsonValidatorShema } from '../schemas/news-post-news-json-validator-shema.js'
 import { newsPutNewsSanitizerMiddleware } from '../middlewares/sanitizers/news-put-news-sanitizer-middleware.js'
 import { newsPostNewsSanitizerMiddleware } from '../middlewares/sanitizers/news-post-news-sanitizer-middleware.js'
+import { newsDeleteNewsSanitizerMiddleware } from '../middlewares/sanitizers/news-delete-news-sanitizer-middleware.js'
+import { newsDeleteNewsJsonValidatorShema } from '../schemas/news-delete-news-json-validator-shema.js'
 
 const newsRouter: Router = Router()
 const newsController: NewsController = new NewsController()
@@ -19,13 +21,22 @@ newsRouter.put(
     (req: Request, res: Response) => newsController.create(req, res),
 )
 
-// Update (only if authenticated)
+// Update a news (only if authenticated)
 newsRouter.post(
     '/news',
     newsPutNewsSanitizerMiddleware,
     jsonValidatorMiddleware(newsPostNewsJsonValidatorShema),
     isAuthenticatedMiddleware,
     (req: Request, res: Response) => newsController.update(req, res),
+)
+
+// Delete a news (only if authenticated)
+newsRouter.delete(
+    '/news',
+    newsDeleteNewsSanitizerMiddleware,
+    jsonValidatorMiddleware(newsDeleteNewsJsonValidatorShema),
+    isAuthenticatedMiddleware,
+    (req: Request, res: Response) => newsController.delete(req, res),
 )
 
 // Get all news
