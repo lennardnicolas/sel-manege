@@ -49,7 +49,7 @@ export class NewsService {
         description: string,
     ): Promise<any> {
         const options = {
-            method: 'PUT',
+            method: 'POST',
             url: ENV.expressUrl + '/news',
             data: {
                 id: id,
