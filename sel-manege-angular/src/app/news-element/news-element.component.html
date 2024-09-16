@@ -45,7 +45,7 @@
 
         @if (editView) {
             <p>
-                <mat-form-field class="textColor" class="percent80Width">
+                <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Date</mat-label>
                     <input
                         #dateInput
@@ -61,7 +61,6 @@
                         <mat-error>La date doit se trouver entre l'an 2000 et l'an 2100</mat-error>
                     }
                 </mat-form-field>
-                <button mat-stroked-button (click)="recetDate()" class="percent20Width" color="primary">Effacer</button>
             </p>
         } @else {
             @if (panelDate) {
@@ -74,7 +73,7 @@
 
         @if (editView) {
             <p>
-                <mat-form-field class="textColor" class="percent80Width">
+                <mat-form-field class="textColor" class="addNewsInput">
                     <mat-label class="textColor">Heure</mat-label>
                     <input
                         #timeInput
@@ -87,7 +86,6 @@
                         placeholder=""
                     />
                 </mat-form-field>
-                <button mat-stroked-button (click)="recetTime()" class="percent20Width" color="primary">Effacer</button>
             </p>
         } @else {
             @if (panelTime) {

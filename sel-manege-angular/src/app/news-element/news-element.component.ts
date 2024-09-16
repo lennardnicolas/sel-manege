@@ -160,16 +160,6 @@ export class NewsElementComponent {
         }
     }
 
-    recetDate() {
-        this.dateFormControl.setValue('')
-        this.dateFormControl.setErrors(null)
-    }
-
-    recetTime() {
-        this.timeFormControl.setValue('')
-        this.timeFormControl.setErrors(null)
-    }
-
     edit(event: Event) {
         event.stopPropagation()
         this.editView = true
