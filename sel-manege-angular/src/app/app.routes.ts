@@ -3,7 +3,6 @@ import { PresentationComponent } from './presentation/presentation.component'
 import { NewsComponent } from './news/news.component'
 import { EchangeComponent } from './echange/echange.component'
 import { ContactComponent } from './contact/contact.component'
-import { ErreurComponent } from './erreur/erreur.component'
 import { ConnexionComponent } from './connexion/connexion.component'
 import { DeconnexionComponent } from './deconnexion/deconnexion.component'
 
@@ -15,6 +14,5 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'connexion', component: ConnexionComponent },
     { path: 'deconnexion', component: DeconnexionComponent },
-    { path: 'erreur', component: ErreurComponent },
-    { path: '**', redirectTo: '/erreur' }
+    { path: '**', redirectTo: '/presentation' }
 ]

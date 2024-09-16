@@ -17,9 +17,9 @@
                     placeholder="Ex: alice.dupont@gmail.com"
                 />
                 @if (emailFormControl.hasError('required')) {
-                    <mat-error>L'adresse mail ne doit pas être vide pour se connecter</mat-error>
+                    <mat-error>L'adresse mail ne doit pas être vide</mat-error>
                 } @else if (emailFormControl.hasError('email')) {
-                    <mat-error>L'adresse mail doit être valide pour se connecter</mat-error>
+                    <mat-error>L'adresse mail doit être valide</mat-error>
                 }
             </mat-form-field>
 

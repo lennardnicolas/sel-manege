@@ -1,5 +1,3 @@
-- Add white background on connexion form
-
 - Add white background for deconnexion text
 
 - Rename DOMAIN settings to express domain
