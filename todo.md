@@ -1,5 +1,3 @@
-- Add possibility to remove and these news
-
 - Fix add news date and time lenght on small screen
 
 - Add white background on connexion form
