@@ -1,5 +1,3 @@
-- Add white background for deconnexion text
-
 - Rename DOMAIN settings to express domain
 
 - Organisate angular structure gerneral dir, component dir, services dir
