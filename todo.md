@@ -1,3 +1,53 @@
+- Add page to display user for authenticated
+
+- Add account email activation by verification (link only valid 1h)
+
+- Add account password change (Who activate the account if account not activated yet)
+
+- Add roles : developpeur, administrateur, member, non membre
+
+- Add protections for actions (dev cant be removed, only admin/ dev can add news, only admin can see user page)
+
+- Add possibility to create account (for non membre)
+
+- Add possibility to create account (from user page from admin) but it do not ask for password, it add the account and send a mail
+ 
+- Add possibility for admin to send a change password mail
+
+- Add possibility for admin to change the role, activation of other user
+
+- Add possibility for admin to delete account
+
+- Add possibility offer or demand for all role exept non membre
+
+- Add possibility for the owner to delete their offer or demand
+
+- Add possibility for admin to delete any offer or demand
+
+- Add categories
+
+- Add economy (to be see in menu)
+
+- Add possibility for to visualise economy on user page for admin
+
+- possibility for admin to change economy (all write need to be saved)
+
+- Add page to view historical transaction for admin
+
+- Add possibility for everyone to select a transaction (need to be confirmed by both party, or 1 admin)
+
+- Add possibility for admin to cancel any transaction
+
+- Add possiblity to post multuples photos
+
+- Add captcha on any form (If 1 captcha is valid, store in session is recapctchaPassed)
+
+- Track ip for failed login and protect login brute force by limiting 10 attempt by 2m
+
+- Track email type, ip, sendtime and add a middleware to protect by time(on types by on account and by ip) email sending
+
+- Add contact form for authenticated personn on contact page
+
 - Rename DOMAIN settings to express domain
 
 - Organisate angular structure gerneral dir, component dir, services dir
@@ -8,33 +58,13 @@
 
 - Simplificate read me by reducing size and add statement to adapt .sh by .ps1 depending on the os
 
-- Add possibility to see user data (first & last name, email, creation date, activation date)
-
-- Add possibility to add user (first & last name, email) and when the user is created, it send a mail with a link who have an long key in the get to activate the account. On the activate account page, if the account dont have any pass, it prompt a password field. Allow account activation only when key + password fill. Use the domain nicolas-lennard.com for the mail now. Save each type of mail send in a table with the date & time & reciver email to avoid spam.
-
-- Add possibility to change password (Even for non activated account, and it activate account on the password recet action)
-
-- Add possibility for user to send password recet mail to an other
-
-- Add possibility for 1 user to delete an other user (exept base user)
-
 - Simplificate news element (set mode for creation, edit, display) and render group rendering
 
 - Use of angular date picker insted of the input of type date now used
 
 - Make a sort that js, html and css are compressed for faster loading slow connexion
 
-- Check to replace the time picker by a better one 
-
-- For user activation and recet, only send mail if user exist and tell to the user to only send if user exist (and in the case of activate only if non activated)
-
-- Add timeout for the recet & activate link
-
-- On failed attempt login, propose to activate account or to recet pass
-
-- Add scrapper service (cypress) who will send data to the db by api (with an api key)
-
-- Implement offer / demand page based on the api result with link to comunity forge
+- Check to replace the time picker by a better one
 
 - Add photos to news
 
@@ -53,10 +83,6 @@
 - Add social links
 
 - Add rules (texts needed)
-
-- Add possibility for anyone to send contact form
-
-- Add économy system with members, rôles and exchange, demand, offer insted of comunity forge
 
 - Migrate server dedicated server for prod
 
