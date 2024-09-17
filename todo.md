@@ -2,6 +2,16 @@
 
 - Add display of these offer and demand with a link to them
 
+- Add social links
+
+- Add rules (texts needed)
+
+- Add team page (text, photos needed)
+
+- Look to use the site in prod still paired with comunity forge for now (Rest of evolutions will come, but later)
+
+-------------------------------------
+
 - Add page to display user for authenticated
 
 - Add account email activation by verification (link only valid 1h)
@@ -81,12 +91,6 @@
 - Change db conn to mysql2 as it's alredy used by typeorm
 
 - Update readme for migrations (file name using kebab case & see to change :generate by :create)
-
-- Add team page (text, photos needed)
-
-- Add social links
-
-- Add rules (texts needed)
 
 - Migrate server dedicated server for prod
 
