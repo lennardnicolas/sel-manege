@@ -50,8 +50,6 @@
 
 - Add team page (text, photos needed)
 
-- Add contact page (text, location, photo)
-
 - Add social links
 
 - Add rules (texts needed)

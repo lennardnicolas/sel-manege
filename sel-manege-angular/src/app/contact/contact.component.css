@@ -4,13 +4,114 @@ app-navbar {
     z-index: 10;
     width: 100%;
 }
-#content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-}
 .presentationPageDisplay {
     display: flex;
     flex-direction: column;
+    background-color: black;
+}
+.contactContentDiv1 {
+    background-color: rgb(236, 236, 236);
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.contactContentDiv2 {
+    background-color: white;
+    flex-grow: 2;
+    display: flex;
+}
+
+@media (max-width: 1000px) {
+    .contactContentDiv2 {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+        padding: 20px;
+    }
+    .contactContentDiv2 > div {
+        flex-direction: row !important;
+    }
+    .contactContentDiv2 > div > span, a {
+        margin: 0px !important;
+        font-size: 3.5vw !important;
+        margin-left: 50px !important;
+    }
+}
+
+@media (max-width: 500px) {
+    .contactContentDiv2 {
+        padding: 10px !important;
+    }
+    .contactContentDiv2 > div > span, a {
+        font-size: 6vw !important;
+        margin-left: 20px !important;
+    }
+}
+.pageView {
+    background-image: none;
+    background-color: white;
+    min-height: 100% !important;
+    padding-top: 46.63px !important;
+}
+#contactText {
+    font-size: 10vw;
+    color: green;
+    white-space: normal;
+    overflow-wrap: break-word;
+    display: block;
+    text-align: center;
+    line-height: 1.5;
+}
+
+@media (max-width: 500px) {
+    #contactText {
+        font-size: 14vw;
+    }
+}
+.contactInfo {
+    border-right: 1px, solid, black;
+    flex-grow: 1;
+    flex-shrink: 0;
+}
+.contactContentDiv2 > div {
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contactContentDiv2 > div > i {
+    font-size: 7vw;
+    color: rgb(0, 83, 0);
+}
+
+.contactContentDiv2 > div > span, a {
+    margin-top: 100px;
+    font-size: 1.3vw;
+    text-decoration: none;
+    color: black;
+    overflow-wrap: break-word;
+}
+
+.contactContentDiv2 > div > span, a:hover {
+    text-decoration: none;
+    color: inherit;
+}
+#firstPage {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+}
+#formDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80vw;
+}
+.formInput {
+    width: 70vw;
 }
