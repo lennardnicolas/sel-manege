@@ -1,3 +1,7 @@
+- Add scrapper cypress to get offer and demand (import to be done by api with an api key), each time a news import is done, it delete the old records
+
+- Add display of these offer and demand with a link to them
+
 - Add page to display user for authenticated
 
 - Add account email activation by verification (link only valid 1h)
