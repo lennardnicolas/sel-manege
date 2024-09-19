@@ -40,9 +40,6 @@ newsRouter.delete(
 )
 
 // Get all news
-newsRouter.get(
-    '/allnews',
-    (req: Request, res: Response) => newsController.getAll(req, res),
-)
+newsRouter.get('/allnews', (req: Request, res: Response) => newsController.getAll(req, res))
 
 export default newsRouter

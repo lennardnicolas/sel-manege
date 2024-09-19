@@ -5,14 +5,8 @@ import { FooterComponent } from '../footer/footer.component'
 @Component({
     selector: 'app-echange',
     standalone: true,
-    imports: [
-        NavbarComponent,
-        FooterComponent
-    ],
+    imports: [NavbarComponent, FooterComponent],
     templateUrl: './echange.component.html',
-    styleUrl: './echange.component.css'
+    styleUrl: './echange.component.css',
 })
-
-export class EchangeComponent {
-
-}
+export class EchangeComponent {}

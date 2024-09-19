@@ -5,14 +5,8 @@ import { FooterComponent } from '../footer/footer.component'
 @Component({
     selector: 'app-contact',
     standalone: true,
-    imports: [
-        NavbarComponent,
-        FooterComponent
-    ],
+    imports: [NavbarComponent, FooterComponent],
     templateUrl: './contact.component.html',
-    styleUrl: './contact.component.css'
+    styleUrl: './contact.component.css',
 })
-
-export class ContactComponent {
-
-}
+export class ContactComponent {}

@@ -12,11 +12,11 @@ export class UserService {
         if (!user.id) {
             throw new Error('User id missing')
         }
-    
-        if(!await this.userModel.getOneByID(user.id)) {
+
+        if (!(await this.userModel.getOneByID(user.id))) {
             throw new Error('User dont exist')
         }
-    
+
         return this.userModel.save(user)
     }
 

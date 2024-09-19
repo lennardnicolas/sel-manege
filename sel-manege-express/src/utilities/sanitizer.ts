@@ -14,7 +14,7 @@ export class Sanitizer {
                 obj[key] = this.sanitizeStringOfObject(obj[key])
             }
         }
-    
+
         return obj
     }
 }

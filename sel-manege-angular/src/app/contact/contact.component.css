@@ -32,7 +32,8 @@ app-navbar {
     .contactContentDiv2 > div {
         flex-direction: row !important;
     }
-    .contactContentDiv2 > div > span, a {
+    .contactContentDiv2 > div > span,
+    a {
         margin: 0px !important;
         font-size: 3.5vw !important;
         margin-left: 50px !important;
@@ -43,7 +44,8 @@ app-navbar {
     .contactContentDiv2 {
         padding: 10px !important;
     }
-    .contactContentDiv2 > div > span, a {
+    .contactContentDiv2 > div > span,
+    a {
         font-size: 6vw !important;
         margin-left: 20px !important;
     }
@@ -89,7 +91,8 @@ app-navbar {
     color: rgb(0, 83, 0);
 }
 
-.contactContentDiv2 > div > span, a {
+.contactContentDiv2 > div > span,
+a {
     margin-top: 100px;
     font-size: 1.3vw;
     text-decoration: none;
@@ -97,7 +100,8 @@ app-navbar {
     overflow-wrap: break-word;
 }
 
-.contactContentDiv2 > div > span, a:hover {
+.contactContentDiv2 > div > span,
+a:hover {
     text-decoration: none;
     color: inherit;
 }

@@ -1,5 +1,8 @@
 <div>
-    @for(news of newsList; track news) {
-        <app-news-element (newsEditSuccess)="newsEditedSuccess()" (newsDeleteSuccess)="newsDeletedSuccess()"></app-news-element>
+    @for (news of newsList; track news) {
+        <app-news-element
+            (newsEditSuccess)="newsEditedSuccess()"
+            (newsDeleteSuccess)="newsDeletedSuccess()"
+        ></app-news-element>
     }
 </div>

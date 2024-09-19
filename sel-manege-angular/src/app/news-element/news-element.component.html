@@ -183,7 +183,14 @@
         }
         @if (editState) {
             <button mat-flat-button color="warn" (click)="cancelEdit()" class="percent50Width">Annuler</button>
-            <button mat-flat-button [disabled]="editBtnDisabled" (click)="update()" class="percent50Width successColorBg text-white">Editer</button>
+            <button
+                mat-flat-button
+                [disabled]="editBtnDisabled"
+                (click)="update()"
+                class="percent50Width successColorBg text-white"
+            >
+                Editer
+            </button>
         }
 
         @if (displayAddError) {

@@ -3,11 +3,10 @@ import { MatInput } from '@angular/material/input'
 
 @Directive({
     selector: '[appCustomMatInputAutofocus]',
-    standalone: true
+    standalone: true,
 })
-
 export class CustomMatInputAutofocusDirective implements OnInit {
-    constructor(private matInput: MatInput) { }
+    constructor(private matInput: MatInput) {}
 
     ngOnInit() {
         setTimeout(() => this.matInput.focus())

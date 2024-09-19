@@ -28,17 +28,21 @@ p {
 .successColorBg {
     background-color: #29c01b;
 }
-#addError, #editError, #deleteError {
+#addError,
+#editError,
+#deleteError {
     text-align: center;
     margin-top: 10px;
     color: red;
 }
 
-.editIcon, .deleteIcon {
+.editIcon,
+.deleteIcon {
     padding: 0 10px;
 }
 
-.editIcon:hover, .deleteIcon:hover {
+.editIcon:hover,
+.deleteIcon:hover {
     color: black;
     transition: 0.5s;
 }

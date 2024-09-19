@@ -9,7 +9,7 @@ import { MatButtonModule } from '@angular/material/button'
     standalone: true,
     imports: [NavbarComponent, FooterComponent, MatButtonModule],
     templateUrl: './deconnexion.component.html',
-    styleUrl: './deconnexion.component.css'
+    styleUrl: './deconnexion.component.css',
 })
 export class DeconnexionComponent {
     logoutSuccess: boolean = false
@@ -25,7 +25,7 @@ export class DeconnexionComponent {
         this.displayLogoutLoading = true
 
         this.authService.logout().then((response: any) => {
-            if(response.status === 200 && response.data) {
+            if (response.status === 200 && response.data) {
                 this.displayLogoutLoading = false
                 this.logoutSuccess = true
             } else {

@@ -18,7 +18,7 @@ export class NewsService {
             throw new Error('News id missing')
         }
 
-        if(!await this.newsModel.getOneByID(news.id)) {
+        if (!(await this.newsModel.getOneByID(news.id))) {
             throw new Error('News dont exist')
         }
 

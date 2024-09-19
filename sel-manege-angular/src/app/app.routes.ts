@@ -14,5 +14,5 @@ export const routes: Routes = [
     { path: 'contact', component: ContactComponent },
     { path: 'connexion', component: ConnexionComponent },
     { path: 'deconnexion', component: DeconnexionComponent },
-    { path: '**', redirectTo: '/presentation' }
+    { path: '**', redirectTo: '/presentation' },
 ]

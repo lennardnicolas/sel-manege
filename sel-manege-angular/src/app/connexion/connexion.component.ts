@@ -58,7 +58,7 @@ export class ConnexionComponent {
 
         if (this.emailFormControl.valid && this.passFormControl.valid) {
             this.authService.login(this.emailFormControl.value!, this.passFormControl.value!).then((response: any) => {
-                if(response.status === 200) {
+                if (response.status === 200) {
                     if (response.data) {
                         this.router.navigate(['/presentation'])
                     } else {
@@ -67,7 +67,6 @@ export class ConnexionComponent {
                 } else {
                     this.loginErrorDisplay = true
                 }
-                
             })
         }
     }

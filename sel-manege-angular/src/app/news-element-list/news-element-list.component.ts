@@ -42,8 +42,7 @@ export class NewsElementListComponent {
                 this.newsList = [
                     {
                         title: 'Erreur',
-                        description:
-                            "Oups, une erreur s'est produite en tentant de charger les news",
+                        description: "Oups, une erreur s'est produite en tentant de charger les news",
                     },
                 ]
             }

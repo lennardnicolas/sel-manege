@@ -33,7 +33,9 @@ app-news-element-list {
     margin-top: 10px;
 }
 
-#addNewsSuccess, #editNewsSuccess, #deleteNewsSuccess {
+#addNewsSuccess,
+#editNewsSuccess,
+#deleteNewsSuccess {
     text-align: center;
     margin-top: 10px;
     width: 80vw;

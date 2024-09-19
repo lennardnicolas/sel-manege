@@ -122,7 +122,6 @@ export class NewsElementComponent {
                     ? this.priceFormControl.value
                     : null
 
-
             this.addBtnDisabled = true
 
             const response: any = await this.newsService.add(
@@ -220,7 +219,7 @@ export class NewsElementComponent {
                 formattedTime,
                 formattedLocation,
                 formattedPrice,
-                this.descriptionFormControl.value!
+                this.descriptionFormControl.value!,
             )
 
             this.editBtnDisabled = false
@@ -250,14 +249,12 @@ export class NewsElementComponent {
     async delete(event: Event) {
         event.stopPropagation()
 
-        if(!this.deleteBtnDisabled) {
+        if (!this.deleteBtnDisabled) {
             this.deleteBtnDisabled = true
             this.displayDeleteError = false
 
-            const response: any = await this.newsService.delete(
-                this.panelId!,
-            )
-            
+            const response: any = await this.newsService.delete(this.panelId!)
+
             if (response.status === 200 && response.data) {
                 this.newsDeleteSuccess.emit()
             } else {
@@ -267,7 +264,7 @@ export class NewsElementComponent {
                     this.displayDeleteError = false
                 }, 5000)
             }
-            
+
             this.deleteBtnDisabled = false
         }
     }

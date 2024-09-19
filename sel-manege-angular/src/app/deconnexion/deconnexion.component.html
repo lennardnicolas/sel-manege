@@ -3,10 +3,9 @@
     <div id="content">
         @if (displayLogoutLoading) {
             <span class="deconnexionText">Deconnexion en cours...</span>
-        }
-        @else if (logoutSuccess) {
+        } @else if (logoutSuccess) {
             <span class="deconnexionText">Vous avez été déconecté</span>
-        } @else if (!logoutSuccess){
+        } @else if (!logoutSuccess) {
             <span class="deconnexionText">Une erreur s'est produite, vous n'avez pas été déconnecté</span>
             <button mat-flat-button (click)="logout()">Réessayer</button>
         }

@@ -27,8 +27,8 @@ app-navbar {
     cursor: pointer;
     width: 50vw;
     min-width: 300px;
-  }
-  .toggleContainer::before {
+}
+.toggleContainer::before {
     content: '';
     position: absolute;
     width: 50%;
@@ -36,31 +36,31 @@ app-navbar {
     left: 0%;
     background: green;
     transition: all 0.3s;
-  }
-  .toggleCheckbox:checked + .toggleContainer::before {
-     left: 50%;
-  }
-  .toggleContainer div {
+}
+.toggleCheckbox:checked + .toggleContainer::before {
+    left: 50%;
+}
+.toggleContainer div {
     padding: 6px;
     text-align: center;
     z-index: 1;
-  }
-  .toggleCheckbox {
+}
+.toggleCheckbox {
     display: none;
-  }
-  .toggleCheckbox:checked + .toggleContainer div:first-child{
+}
+.toggleCheckbox:checked + .toggleContainer div:first-child {
     color: white;
     transition: color 0.3s;
-  }
-  .toggleCheckbox:checked + .toggleContainer div:last-child{
+}
+.toggleCheckbox:checked + .toggleContainer div:last-child {
     color: white;
     transition: color 0.3s;
-  }
-  .toggleCheckbox + .toggleContainer div:first-child{
+}
+.toggleCheckbox + .toggleContainer div:first-child {
     color: white;
     transition: color 0.3s;
-  }
-  .toggleCheckbox + .toggleContainer div:last-child{
+}
+.toggleCheckbox + .toggleContainer div:last-child {
     color: white;
     transition: color 0.3s;
-  }
+}

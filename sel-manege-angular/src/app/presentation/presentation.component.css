@@ -139,7 +139,11 @@ app-navbar {
     line-height: 1;
     margin-top: 30px;
     font-family: 'UploadedGtFlexaBold' !important;
-    text-shadow: 4px 4px 0 green, -4px -4px 0 green, -4px 4px 0 green, 4px -4px 0 green;
+    text-shadow:
+        4px 4px 0 green,
+        -4px -4px 0 green,
+        -4px 4px 0 green,
+        4px -4px 0 green;
 }
 @media (min-width: 1000px) {
     .selText {
@@ -158,7 +162,6 @@ app-navbar {
     max-width: 600px;
     padding: 20px;
 }
-
 
 @media (min-width: 900px) {
     #shema {

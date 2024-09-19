@@ -6,7 +6,7 @@ footer {
     align-items: center;
     overflow: hidden;
 }
-.footerBottom{
+.footerBottom {
     background-color: #003a03;
     padding: 20px;
     text-align: center;
@@ -22,11 +22,12 @@ footer {
     color: white;
     font-size: 30px;
 }
-.socialIcons > *:hover, #footerNav > *:hover{
+.socialIcons > *:hover,
+#footerNav > *:hover {
     color: rgb(163, 161, 161);
     transition: 0.5s;
 }
-#footerNav a{
+#footerNav a {
     padding: 20px;
     text-decoration: none;
     color: white;
@@ -37,7 +38,7 @@ footer {
     flex-grow: initial;
 }
 
-@media (max-width: 700px){
+@media (max-width: 700px) {
     #footerNav {
         display: flex;
         flex-direction: column;

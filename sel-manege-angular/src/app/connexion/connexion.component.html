@@ -39,14 +39,7 @@
                 }
             </mat-form-field>
 
-            <button
-                type="submit"
-                id="connexionButton"
-                mat-flat-button
-                (click)="connect()"
-            >
-                Se connecter
-            </button>
+            <button type="submit" id="connexionButton" mat-flat-button (click)="connect()">Se connecter</button>
 
             @if (invalidLoginError) {
                 <mat-error class="generalMat-error">

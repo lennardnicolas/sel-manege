@@ -7,16 +7,8 @@ import { MatButtonModule } from '@angular/material/button'
 @Component({
     selector: 'app-presentation',
     standalone: true,
-    imports: [
-    NavbarComponent,
-    FooterComponent,
-    MatDividerModule,
-    MatButtonModule
-    ],
+    imports: [NavbarComponent, FooterComponent, MatDividerModule, MatButtonModule],
     templateUrl: './presentation.component.html',
-    styleUrl: './presentation.component.css'
+    styleUrl: './presentation.component.css',
 })
-
-export class PresentationComponent {
-
-}
+export class PresentationComponent {}

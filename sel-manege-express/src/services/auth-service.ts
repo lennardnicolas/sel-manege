@@ -17,11 +17,11 @@ export class AuthService {
         if (!auth.id) {
             throw new Error('Auth id missing')
         }
-    
-        if(!await this.authModel.getOneByID(auth.id)) {
+
+        if (!(await this.authModel.getOneByID(auth.id))) {
             throw new Error('Auth dont exist')
         }
-    
+
         return this.authModel.save(auth)
     }
 

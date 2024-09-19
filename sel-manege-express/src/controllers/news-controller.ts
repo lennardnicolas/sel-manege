@@ -70,7 +70,7 @@ export class NewsController {
         try {
             const deleteResponse = await this.newsService.delete(id)
 
-            if(deleteResponse.affected == 0) {
+            if (deleteResponse.affected == 0) {
                 throw new Error('No news exist with this id')
             }
 
