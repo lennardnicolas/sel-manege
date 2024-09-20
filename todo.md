@@ -68,8 +68,6 @@
 
 - Unificate the migrations
 
-- Check if some warning can be removed when running npm install and npm run build and npm run start
-
 - Simplificate read me by reducing size and add statement to adapt .sh by .ps1 depending on the os
 
 - Simplificate news element (set mode for creation, edit, display) and render group rendering
