@@ -70,8 +70,6 @@
 
 - Switch to angular 18
 
-- Upgrade eslint in express
-
 - Check if some warning can be removed when running npm install and npm run build and npm run start
 
 - Simplificate read me by reducing size and add statement to adapt .sh by .ps1 depending on the os
