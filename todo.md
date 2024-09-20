@@ -70,7 +70,7 @@
 
 - Switch to angular 18
 
-- Upgrade eslint in angular and express
+- Upgrade eslint in express
 
 - Check if some warning can be removed when running npm install and npm run build and npm run start
 
@@ -94,7 +94,7 @@
 
 - Change db conn to mysql2 as it's alredy used by typeorm
 
-- Update readme for migrations (file name using kebab case & see to change :generate by :create)
+- Update readme for migrations (see to change :generate by :create)
 
 - Migrate server dedicated server for prod
 

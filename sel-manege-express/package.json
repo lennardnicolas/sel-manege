@@ -7,7 +7,9 @@
     "scripts": {
         "build": "tsc",
         "start": "node ./dist/index.js",
-        "devstart": "nodemon --legacy-watch --watch . --ext ts,js,json --exec node --import \"./ts-loader.js\" ./src/index.ts"
+        "devstart": "nodemon --legacy-watch --watch . --ext ts,js,json --exec node --import \"./ts-loader.js\" ./src/index.ts",
+        "lint": "npx eslint .",
+        "format": "npx prettier --write ."
     },
     "keywords": [],
     "author": "",
