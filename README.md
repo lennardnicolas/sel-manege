@@ -92,12 +92,6 @@ For your code editor to understand the code correctly, to lint and format the co
 npm install
 ```
 
-Also run this command to have access to the angular cli :
-
-```
-npm install -g @angular/cli
-```
-
 You can now install the vscode extention `ESLint` from Microsoft to have the warnings or error displayed in your ide.
 
 You can also get the lint information with the terminal with this command from the [sel-manege-express](./sel-manege-express) or the [sel-manege-angular](./sel-manege-angular) dir :
