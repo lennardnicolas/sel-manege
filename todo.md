@@ -10,6 +10,8 @@
 
 - Look to use the site in prod still paired with comunity forge for now (Rest of evolutions will come, but later)
 
+- Add automatic test for api(mocha) and e2e(cypress)
+
 -------------------------------------
 
 - Add page to display user for authenticated
