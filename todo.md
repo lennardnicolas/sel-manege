@@ -66,6 +66,8 @@
 
 - Organisate angular structure gerneral dir, component dir, services dir
 
+- Put config file (like typeorm datasource in the root of the project) and the code in src (check if it's the case for some other file)
+
 - Unificate the migrations
 
 - Simplificate read me by reducing size and add statement to adapt .sh by .ps1 depending on the os
