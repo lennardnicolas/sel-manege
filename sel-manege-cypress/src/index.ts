@@ -13,11 +13,11 @@ function runShellCommand(command: string): Promise<void> {
         const process = spawn(command, { shell: true })
 
         process.stdout.on('data', (data) => {
-            console.log('Output : ' + data.toString())
+            console.log(data.toString())
         })
 
         process.stderr.on('data', (errData) => {
-            console.error('Error : ' + errData.toString())
+            console.error(errData.toString())
         })
 
         process.on('close', (code) => {
@@ -40,7 +40,7 @@ while (true) {
     const startTime = Date.now()
 
     try {
-        await runShellCommand('echo cypress command')
+        await runShellCommand('npx cypress run')
         console.log('Command completed successfully.')
     } catch (err) {
         console.error('Command failed : ' + err)
