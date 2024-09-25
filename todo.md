@@ -66,6 +66,8 @@
 
 - Rename DOMAIN settings to express domain
 
+- Rename angular, cypress, express by front, back, cypress (rename the package name to)
+
 - Organisate angular structure gerneral dir, component dir, services dir
 
 - Put config file (like typeorm datasource in the root of the project) and the code in src (check if it's the case for some other file)
