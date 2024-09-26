@@ -49,7 +49,7 @@ export class ConnexionComponent {
         this.router = router
     }
 
-    connect() {
+    async connect() {
         this.invalidLoginError = false
         this.loginErrorDisplay = false
 
@@ -57,17 +57,17 @@ export class ConnexionComponent {
         this.passFormControl.markAllAsTouched()
 
         if (this.emailFormControl.valid && this.passFormControl.valid) {
-            this.authService.login(this.emailFormControl.value!, this.passFormControl.value!).then((response: any) => {
-                if (response.status === 200) {
-                    if (response.data) {
-                        this.router.navigate(['/presentation'])
-                    } else {
-                        this.invalidLoginError = true
-                    }
+            const response = await this.authService.login(this.emailFormControl.value!, this.passFormControl.value!)
+            
+            if (response.status === 200) {
+                if (response.data) {
+                    this.router.navigate(['/presentation'])
                 } else {
-                    this.loginErrorDisplay = true
+                    this.invalidLoginError = true
                 }
-            })
+            } else {
+                this.loginErrorDisplay = true
+            }
         }
     }
 }

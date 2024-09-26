@@ -21,17 +21,17 @@ export class DeconnexionComponent {
         this.logout()
     }
 
-    logout() {
+    async logout() {
         this.displayLogoutLoading = true
 
-        this.authService.logout().then((response: any) => {
-            if (response.status === 200 && response.data) {
-                this.displayLogoutLoading = false
-                this.logoutSuccess = true
-            } else {
-                this.displayLogoutLoading = false
-                this.logoutSuccess = false
-            }
-        })
+        const response = await this.authService.logout()
+        
+        if (response.status === 200 && response.data) {
+            this.displayLogoutLoading = false
+            this.logoutSuccess = true
+        } else {
+            this.displayLogoutLoading = false
+            this.logoutSuccess = false
+        }
     }
 }

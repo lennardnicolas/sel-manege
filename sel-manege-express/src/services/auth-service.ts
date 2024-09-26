@@ -5,11 +5,11 @@ import bcrypt from 'bcrypt'
 export class AuthService {
     private authModel: AuthModel = new AuthModel()
 
-    async getOneByID(id: number): Promise<Auth | null> {
+    getOneByID(id: number): Promise<Auth | null> {
         return this.authModel.getOneByID(id)
     }
 
-    async getOneByEmail(email: string): Promise<Auth | null> {
+    getOneByEmail(email: string): Promise<Auth | null> {
         return this.authModel.getOneByEmail(email)
     }
 
@@ -25,7 +25,7 @@ export class AuthService {
         return this.authModel.save(auth)
     }
 
-    async create(news: Auth): Promise<Auth> {
+    create(news: Auth): Promise<Auth> {
         return this.authModel.save(news)
     }
 

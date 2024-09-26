@@ -10,14 +10,14 @@ export class AuthController {
         const pass: string = req.body.pass
 
         try {
-            this.authService.canLogin(email, pass).then((canLoginID: number | null) => {
-                if (canLoginID) {
-                    req.session.authenticatedUserID = canLoginID
-                    res.json(true)
-                } else {
-                    res.json(false)
-                }
-            })
+            const canLoginID: number | null = await this.authService.canLogin(email, pass)
+            
+            if (canLoginID) {
+                req.session.authenticatedUserID = canLoginID
+                res.json(true)
+            } else {
+                res.json(false)
+            }
         } catch (err) {
             const baseErrMessage: string = 'Error when logging in'
             console.log(baseErrMessage + ' : ' + err)
@@ -25,7 +25,7 @@ export class AuthController {
         }
     }
 
-    async logout(req: Request, res: Response) {
+    logout(req: Request, res: Response) {
         req.session.destroy((err) => {
             if (err) {
                 const baseErrMessage: string = 'Error when destroying session'
