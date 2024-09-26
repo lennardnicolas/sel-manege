@@ -1,6 +1,6 @@
-import { ExpressServer } from './express-server.js'
-import { Db } from './utilities/db.js'
-import { dataSource } from './data-source.js'
+import { ExpressServer } from './src/express-server.js'
+import { Db } from './src/utilities/db.js'
+import { dataSource } from './src/data-source.js'
 
 const db = Db.getInstance()
 const express_server = new ExpressServer()
