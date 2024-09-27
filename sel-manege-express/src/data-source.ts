@@ -10,8 +10,8 @@ let migrationsPath: string[] = []
 
 switch (profil) {
     case 'prod':
-        entitiesPath = ['dist/entities/**/*.js']
-        migrationsPath = ['dist/migrations/**/*.js']
+        entitiesPath = ['dist/src/entities/**/*.js']
+        migrationsPath = ['dist/src/migrations/**/*.js']
         break
     case 'dev':
         entitiesPath = ['src/entities/**/*.ts']
