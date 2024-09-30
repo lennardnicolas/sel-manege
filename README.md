@@ -111,5 +111,5 @@ npm run format
 You can also create a new migration file with this command from the [sel-manege-express](./sel-manege-express) dir :
 
 ```
-node --import './ts-loader.js' ./node_modules/typeorm/cli.js migration:generate -d src/data-source-dev.ts src/migrations/migration-name
+node --import "./ts-loader.js" ./node_modules/typeorm/cli.js migration:generate -d src/data-source-dev.ts src/migrations/migration-name
 ```
