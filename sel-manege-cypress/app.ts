@@ -40,7 +40,10 @@ while (true) {
     const startTime = Date.now()
 
     try {
-        await runShellCommand('npx cypress run')
+        const command = 'npx cypress run'
+
+        await runShellCommand(command)
+
         console.log('Command completed successfully.')
     } catch (err) {
         console.error('Command failed : ' + err)
