@@ -1,15 +1,15 @@
 import { MigrationInterface, QueryRunner } from 'typeorm'
 import { AuthService } from '../services/auth-service.js'
 
-export class InitialMigration1724861104823 implements MigrationInterface {
-    name = 'InitialMigration1724861104823'
+export class DbCreationSeeding1727898914016 implements MigrationInterface {
+    name = 'DbCreationSeeding1727898914016'
 
     public async up(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.query(
             `CREATE TABLE \`auth\` (\`id\` int NOT NULL AUTO_INCREMENT, \`email\` varchar(255) NOT NULL, \`password\` varchar(255) NOT NULL, \`userId\` int NOT NULL, INDEX \`idx_email_password\` (\`email\`, \`password\`), UNIQUE INDEX \`IDX_b54f616411ef3824f6a5c06ea4\` (\`email\`), UNIQUE INDEX \`REL_373ead146f110f04dad6084815\` (\`userId\`), PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
         )
         await queryRunner.query(
-            `CREATE TABLE \`news\` (\`id\` int NOT NULL AUTO_INCREMENT, \`title\` varchar(255) NOT NULL, \`date\` date NULL, \`time\` time NULL, \`location\` varchar(255) NULL, \`price\` decimal(10,2) NULL, \`description\` text NOT NULL, \`userId\` int NOT NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
+            `CREATE TABLE \`news\` (\`id\` int NOT NULL AUTO_INCREMENT, \`title\` varchar(255) NOT NULL, \`date\` date NULL, \`time\` time NULL, \`location\` varchar(255) NULL, \`price\` varchar(255) NULL, \`description\` text NOT NULL, \`userId\` int NOT NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
         )
         await queryRunner.query(
             `CREATE TABLE \`user\` (\`id\` int NOT NULL AUTO_INCREMENT, \`firstname\` varchar(255) NOT NULL, \`lastname\` varchar(255) NOT NULL, PRIMARY KEY (\`id\`)) ENGINE=InnoDB`,
@@ -32,7 +32,7 @@ export class InitialMigration1724861104823 implements MigrationInterface {
         let sql = `
             INSERT INTO user (firstname, lastname)
             VALUES (?, ?)
-            `
+        `
 
         let values = [userFirstName, userLastName]
 
@@ -48,7 +48,7 @@ export class InitialMigration1724861104823 implements MigrationInterface {
         sql = `
             INSERT INTO auth (email, password, userId)
             VALUES (?, ?, ?)
-            `
+        `
 
         values = [userMail, encryptedUserPass, '1']
 

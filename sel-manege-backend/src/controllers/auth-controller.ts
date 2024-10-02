@@ -11,7 +11,7 @@ export class AuthController {
 
         try {
             const canLoginID: number | null = await this.authService.canLogin(email, pass)
-            
+
             if (canLoginID) {
                 req.session.authenticatedUserID = canLoginID
                 res.json(true)
