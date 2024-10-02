@@ -25,7 +25,7 @@ export class DeconnexionComponent {
         this.displayLogoutLoading = true
 
         const response = await this.authService.logout()
-        
+
         if (response.status === 200 && response.data) {
             this.displayLogoutLoading = false
             this.logoutSuccess = true

@@ -58,7 +58,7 @@ export class ConnexionComponent {
 
         if (this.emailFormControl.valid && this.passFormControl.valid) {
             const response = await this.authService.login(this.emailFormControl.value!, this.passFormControl.value!)
-            
+
             if (response.status === 200) {
                 if (response.data) {
                     this.router.navigate(['/presentation'])

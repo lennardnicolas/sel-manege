@@ -8,21 +8,13 @@ body {
     margin: 0;
 }
 * {
-    font-family: UploadedGtFlexaMeduim !important;
+    font-family: UploadedAlfaSlabOneRegular !important;
 }
 @font-face {
-    font-family: 'UploadedGtFlexaMeduim';
+    font-family: 'UploadedAlfaSlabOneRegular';
     src:
-        url('./assets/fonts/gt-flexa/gt-flexa-meduim.woff2') format('woff2'),
-        url('./assets/fonts/gt-flexa/gt-flexa-meduim.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'UploadedGtFlexaBold';
-    src:
-        url('./assets/fonts/gt-flexa/gt-flexa-extended-bold.woff2') format('woff2'),
-        url('./assets/fonts/gt-flexa/gt-flexa-extended-bold.woff') format('woff');
+        url('./assets/fonts/alfa-slab-one/alfa-slab-one-regular.woff2') format('woff2'),
+        url('./assets/fonts/alfa-slab-one/alfa-slab-one-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }

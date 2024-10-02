@@ -27,7 +27,7 @@ export class NewsElementListComponent {
 
     async reloadNews() {
         const response = await this.newsService.getAll()
-        
+
         if (response.status === 200) {
             if (response.data.length == 0) {
                 this.newsList = [
