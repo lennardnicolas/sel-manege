@@ -77,6 +77,7 @@ services:
             - ./sel-manege-frontend:/root/sel-manege-frontend
             # These volumes (down) are there because they override the general one allowing to exclude these dir from sync
             - angular_node_modules:/root/sel-manege-frontend/node_modules
+            - angular_angular_cache:/root/sel-manege-frontend/.angular/cache
             - angular_environment:/root/sel-manege-frontend/environment
 
 volumes:
@@ -84,6 +85,7 @@ volumes:
     mariadb-data:
     express_node_modules:
     angular_node_modules:
+    angular_angular_cache:
     angular_environment:
 networks:
     net:

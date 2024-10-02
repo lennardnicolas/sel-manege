@@ -26,7 +26,7 @@ switch ($command.ToLower()) {
         
         docker compose -p dev-sel-manege --file ./docker-compose-dev.yml down --rmi all
 
-        docker volume rm dev-sel-manege_express_node_modules dev-sel-manege_angular_node_modules dev-sel-manege_angular_environment
+        docker volume rm dev-sel-manege_express_node_modules dev-sel-manege_angular_node_modules dev-sel-manege_angular_angular_cache dev-sel-manege_angular_environment
 
         docker compose -p dev-sel-manege --file ./docker-compose-dev.yml up -d
     }
