@@ -1,1 +1,0 @@
-- Make a sort that js, html and css are compressed for faster loading slow connexion

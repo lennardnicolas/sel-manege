@@ -7,5 +7,5 @@ ARG SEL_MANEGE_EXPRESS_URL
 RUN sed -i "s|{{SEL_MANEGE_EXPRESS_URL}}|${SEL_MANEGE_EXPRESS_URL}|g" ./environment/environment.ts
 
 RUN npm install
-RUN npm run build
+RUN npm run build --configuration=production
 CMD npm run start
