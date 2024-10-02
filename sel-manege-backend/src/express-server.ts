@@ -22,7 +22,7 @@ export class ExpressServer {
             : 0
         const redisPass: string = process.env.SEL_MANEGE_REDIS_PASS ? process.env.SEL_MANEGE_REDIS_PASS : ''
         const angularUrl: string = process.env.SEL_MANEGE_ANGULAR_URL ? process.env.SEL_MANEGE_ANGULAR_URL : ''
-        const domain: string = process.env.SEL_MANEGE_DOMAIN ? process.env.SEL_MANEGE_DOMAIN : ''
+        const domain: string = process.env.SEL_MANEGE_EXPRESS_DOMAIN ? process.env.SEL_MANEGE_EXPRESS_DOMAIN : ''
 
         const app = express()
 

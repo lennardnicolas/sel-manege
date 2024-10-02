@@ -86,7 +86,7 @@ To remove all app data use this command in powershell from the project dir :
 .\sel-manege.ps1 devremove
 ```
 
-For your code editor to understand the code correctly, to lint and format the code run this command from the [sel-manege-express](./sel-manege-express) and the [sel-manege-angular](./sel-manege-angular) dir :
+For your code editor to understand the code correctly, to lint and format the code run this command from the [sel-manege-backend](./sel-manege-backend) and the [sel-manege-frontend](./sel-manege-frontend) dir :
 
 ```
 npm install
@@ -94,7 +94,7 @@ npm install
 
 You can now install the vscode extention `ESLint` from Microsoft to have the warnings or error displayed in your ide.
 
-You can also get the lint information with the terminal with this command from the [sel-manege-express](./sel-manege-express) or the [sel-manege-angular](./sel-manege-angular) dir :
+You can also get the lint information with the terminal with this command from the [sel-manege-backend](./sel-manege-backend) or the [sel-manege-frontend](./sel-manege-frontend) dir :
 
 ```
 npm run lint
@@ -102,13 +102,13 @@ npm run lint
 
 You can now install the vscode extention `Prettier - Code formatter` from Prettier to format your code with `ALT` + `SHIFT` + `F`.
 
-You can also format your code with the terminal with this command from the [sel-manege-express](./sel-manege-express) or the [sel-manege-angular](./sel-manege-angular) dir :
+You can also format your code with the terminal with this command from the [sel-manege-backend](./sel-manege-backend) or the [sel-manege-frontend](./sel-manege-frontend) dir :
 
 ```
 npm run format
 ```
 
-You can also create a new migration file with this command from the [sel-manege-express](./sel-manege-express) dir :
+You can also create a new migration file with this command from the [sel-manege-backend](./sel-manege-backend) dir :
 
 ```
 node --import "./ts-loader.js" ./node_modules/typeorm/cli.js migration:generate -d src/data-source-dev.ts src/migrations/migration-name

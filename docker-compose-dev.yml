@@ -25,7 +25,7 @@ services:
 
     express:
         build:
-            context: ./sel-manege-express
+            context: ./sel-manege-backend
             dockerfile: dockerfile.dev
         restart: always
         ports:
@@ -40,7 +40,7 @@ services:
             - SEL_MANEGE_DB_PORT=3306
             - SEL_MANEGE_DB_PASS=${SEL_MANEGE_MARIADB_PASS}
             - SEL_MANEGE_ANGULAR_URL=${SEL_MANEGE_ANGULAR_URL}
-            - SEL_MANEGE_DOMAIN=${SEL_MANEGE_DOMAIN}
+            - SEL_MANEGE_EXPRESS_DOMAIN=${SEL_MANEGE_EXPRESS_DOMAIN}
             - SEL_MANEGE_BASE_USER_MAIL=${SEL_MANEGE_BASE_USER_MAIL}
             - SEL_MANEGE_BASE_USER_PASS=${SEL_MANEGE_BASE_USER_PASS}
             - SEL_MANEGE_PROFIL=dev
@@ -52,13 +52,13 @@ services:
             - keydb
             - mariadb
         volumes:
-            - ./sel-manege-express:/root/sel-manege-express
+            - ./sel-manege-backend:/root/sel-manege-backend
             # This volume (down) is there because it override the general one allowing to exclude this dir from sync
-            - express_node_modules:/root/sel-manege-express/node_modules
+            - express_node_modules:/root/sel-manege-backend/node_modules
     
     angular:
         build:
-            context: ./sel-manege-angular
+            context: ./sel-manege-frontend
             dockerfile: dockerfile.dev
             args:
                 - SEL_MANEGE_EXPRESS_URL=${SEL_MANEGE_EXPRESS_URL}
@@ -74,10 +74,10 @@ services:
             - mariadb
             - express
         volumes:
-            - ./sel-manege-angular:/root/sel-manege-angular
+            - ./sel-manege-frontend:/root/sel-manege-frontend
             # These volumes (down) are there because they override the general one allowing to exclude these dir from sync
-            - angular_node_modules:/root/sel-manege-angular/node_modules
-            - angular_environment:/root/sel-manege-angular/environment
+            - angular_node_modules:/root/sel-manege-frontend/node_modules
+            - angular_environment:/root/sel-manege-frontend/environment
 
 volumes:
     keydb-data:

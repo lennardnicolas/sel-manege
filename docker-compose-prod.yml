@@ -25,7 +25,7 @@ services:
 
     express:
         build:
-            context: ./sel-manege-express
+            context: ./sel-manege-backend
             dockerfile: dockerfile.prod
         restart: always
         ports:
@@ -40,7 +40,7 @@ services:
             - SEL_MANEGE_DB_PORT=3306
             - SEL_MANEGE_DB_PASS=${SEL_MANEGE_MARIADB_PASS}
             - SEL_MANEGE_ANGULAR_URL=${SEL_MANEGE_ANGULAR_URL}
-            - SEL_MANEGE_DOMAIN=${SEL_MANEGE_DOMAIN}
+            - SEL_MANEGE_EXPRESS_DOMAIN=${SEL_MANEGE_EXPRESS_DOMAIN}
             - SEL_MANEGE_BASE_USER_MAIL=${SEL_MANEGE_BASE_USER_MAIL}
             - SEL_MANEGE_BASE_USER_PASS=${SEL_MANEGE_BASE_USER_PASS}
             - SEL_MANEGE_PROFIL=prod
@@ -54,7 +54,7 @@ services:
     
     angular:
         build:
-            context: ./sel-manege-angular
+            context: ./sel-manege-frontend
             dockerfile: dockerfile.prod
             args:
                 - SEL_MANEGE_EXPRESS_URL=${SEL_MANEGE_EXPRESS_URL}
