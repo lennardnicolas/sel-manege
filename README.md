@@ -1,6 +1,6 @@
 # sel-manege
 
-sel-manege is a web app allowing to manage communication, economy, member, offer and demand of the sel-manege association
+sel-manege is a web app allowing to publish news of the sel-manege association
 
 ## Prerequisite
 
