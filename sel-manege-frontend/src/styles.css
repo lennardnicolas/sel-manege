@@ -8,13 +8,21 @@ body {
     margin: 0;
 }
 * {
-    font-family: UploadedAlfaSlabOneRegular !important;
+    font-family: UploadedGagalinRegular !important;
 }
 @font-face {
     font-family: 'UploadedAlfaSlabOneRegular';
     src:
         url('./assets/fonts/alfa-slab-one/alfa-slab-one-regular.woff2') format('woff2'),
         url('./assets/fonts/alfa-slab-one/alfa-slab-one-regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UploadedGagalinRegular';
+    src:
+        url('./assets/fonts/gagalin/gagalin-regular.woff2') format('woff2'),
+        url('./assets/fonts/gagalin/gagalin-regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
 }
