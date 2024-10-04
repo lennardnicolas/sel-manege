@@ -138,11 +138,13 @@ app-navbar {
     text-align: center;
     line-height: 1;
     margin-top: 30px;
+    /*
     text-shadow:
         4px 4px 0 green,
         -4px -4px 0 green,
         -4px 4px 0 green,
         4px -4px 0 green;
+    */
 }
 @media (min-width: 1000px) {
     .selText {
